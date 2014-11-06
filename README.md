@@ -7,14 +7,13 @@ In early June, 2014 Apple [dropped a bomb][announcement] on developers worldwide
 Through heavy use of examples, and coding via the [Read Eval Print Loop (REPL)][repl], [Playgrounds][playgrounds-drawing], and test scaffolding, we’ll spend a day getting to know the Swift programming language. We'll focus on fostering a discussion of Swift via hands-on experimentation.
 
 ### How is this different?
-This course is a [Swift][swift] basics primer, taught via examples, participation, and discussion. Other classes can teach you how to build apps, and involve a giant (and quite wonderful) world of tools, languages, techniques, and libraries. We’re not going to do that. This course to focus only on the [Swift][swift] programming language.
+This course is a [Swift][swift] basics primer, taught via examples, participation, and discussion. Other classes can teach you how to build apps, and involve a giant (and quite wonderful) world of tools, languages, techniques, and libraries. We’re not going to do that. This course focuses only on the [Swift][swift] programming language.
 
 ### Who is this for?
 Are you familiar with at least one programming language? Do you enjoy programming or wish you did? Are you interested in or do you have experience developing iOS or OS X applications? If so, this class is for you.
 
 ### What should I do before this course?
 Join in the discussion of what topics should be included in this course, on the [course wiki][wiki].
-
 
 ### Who are you?
 [Kyle Oba](https://twitter.com/mudphone) builds iOS apps at [Pas de Chocolat](http://pasdechocolat.com/), a local design/development shop he runs with his partner and designer, Cara Oba. They specialize in design research, mobile software, and digital art. Kyle has been building iOS apps since he bought his first iPhone 3G in 2009.
