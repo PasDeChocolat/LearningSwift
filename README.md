@@ -18,6 +18,21 @@ Join in the discussion of what topics should be included in this course, on the 
 ### Would you like to contribute?
 Pull requests and other forms of collaboration welcome.
 
+### Suggested Topics
+- currying
+- pattern matching
+- initializers
+- struct and class differences
+- immutability
+- ? ! and optionals
+- nullability safety rules
+- trailing closures
+- internal and external parameter names, first parameter exception to the rule
+- destructuring
+- generics
+- how to read function signatures, higher order functions
+- list comprehensions
+
 [swift]: https://developer.apple.com/swift/ "A new programming language for iOS and OS X."
 [announcement]: http://www.theverge.com/2014/6/2/5772992/apple-has-a-new-programming-language-called-swift-and-it-totally-rules
 [playgrounds-drawing]: https://www.youtube.com/watch?v=F9T551Y0mYo
