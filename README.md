@@ -33,8 +33,14 @@ Pull requests and other forms of collaboration welcome.
 - how to read function signatures, higher order functions
 - list comprehensions
 
+### Resources
+- [The Swift Programming Language, by Apple, Inc.][swift ref]
+- [Using Swift with Cocoa and Objective-C, by Apple, Inc.][swift cocoa objc ref]
+
 [swift]: https://developer.apple.com/swift/ "A new programming language for iOS and OS X."
 [announcement]: http://www.theverge.com/2014/6/2/5772992/apple-has-a-new-programming-language-called-swift-and-it-totally-rules
 [playgrounds-drawing]: https://www.youtube.com/watch?v=F9T551Y0mYo
 [repl]: http://alblue.bandlem.com/2014/09/swift-introduction-to-the-repl.html
 [wiki]: https://github.com/PasDeChocolat/LearningSwift
+[swift ref]: https://itunes.apple.com/us/book/swift-programming-language/id881256329?mt=11
+[swift cocoa objc ref]: https://itunes.apple.com/us/book/using-swift-cocoa-objective/id888894773?mt=11
