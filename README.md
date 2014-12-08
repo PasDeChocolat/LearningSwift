@@ -34,8 +34,8 @@ Pull requests and other forms of collaboration welcome.
 - list comprehensions
 
 ### Resources
-- [The Swift Programming Language, by Apple, Inc.][swift ref]
-- [Using Swift with Cocoa and Objective-C, by Apple, Inc.][swift cocoa objc ref]
+- [The Swift Programming Language, by Apple, Inc.][swift ref] (or, [as eBook][swift ref ebook])
+- [Using Swift with Cocoa and Objective-C, by Apple, Inc.][swift cocoa objc ref] (or, [as eBook][swift cocoa objc ref ebook])
 
 [swift]: https://developer.apple.com/swift/ "A new programming language for iOS and OS X."
 [announcement]: http://www.theverge.com/2014/6/2/5772992/apple-has-a-new-programming-language-called-swift-and-it-totally-rules
@@ -44,3 +44,5 @@ Pull requests and other forms of collaboration welcome.
 [wiki]: https://github.com/PasDeChocolat/LearningSwift
 [swift ref]: https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-XID_0
 [swift cocoa objc ref]: https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html#//apple_ref/doc/uid/TP40014216-CH2-XID_0
+[swift ref ebook]: https://itunes.apple.com/us/book/swift-programming-language/id881256329?mt=11
+[swift cocoa objc ref ebook]: https://itunes.apple.com/us/book/using-swift-cocoa-objective/id888894773?mt=11
