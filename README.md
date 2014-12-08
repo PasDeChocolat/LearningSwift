@@ -42,5 +42,5 @@ Pull requests and other forms of collaboration welcome.
 [playgrounds-drawing]: https://www.youtube.com/watch?v=F9T551Y0mYo
 [repl]: http://alblue.bandlem.com/2014/09/swift-introduction-to-the-repl.html
 [wiki]: https://github.com/PasDeChocolat/LearningSwift
-[swift ref]: https://itunes.apple.com/us/book/swift-programming-language/id881256329?mt=11
-[swift cocoa objc ref]: https://itunes.apple.com/us/book/using-swift-cocoa-objective/id888894773?mt=11
+[swift ref]: https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-XID_0
+[swift cocoa objc ref]: https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html#//apple_ref/doc/uid/TP40014216-CH2-XID_0
