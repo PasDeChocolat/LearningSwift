@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version="3.0" sdk="iphonesimulator">
+    <sections>
+        <documentation relative-path="fragment-0.html">
+        </documentation>
+        <code source-file-name="section-1.swift">
+        </code>
+        <documentation relative-path="fragment-2.html">
+        </documentation>
+        <code source-file-name="section-3.swift">
+        </code>
+        <documentation relative-path="fragment-4.html">
+        </documentation>
+        <code source-file-name="section-5.swift">
+        </code>
+        <documentation relative-path="fragment-6.html">
+        </documentation>
+        <code source-file-name="section-7.swift">
+        </code>
+        <documentation relative-path="fragment-8.html">
+        </documentation>
+        <code source-file-name="section-9.swift">
+        </code>
+        <documentation relative-path="fragment-10.html">
+        </documentation>
+        <code source-file-name="section-11.swift">
+        </code>
+        <documentation relative-path="fragment-12.html">
+        </documentation>
+        <code source-file-name="section-13.swift">
+        </code>
+        <documentation relative-path="fragment-14.html">
+        </documentation>
+        <code source-file-name="section-15.swift">
+        </code>
+        <documentation relative-path="fragment-16.html">
+        </documentation>
+        <code source-file-name="section-17.swift">
+        </code>
+        <documentation relative-path="fragment-18.html">
+        </documentation>
+        <code source-file-name="section-19.swift">
+        </code>
+        <documentation relative-path="fragment-20.html">
+        </documentation>
+        <code source-file-name="section-21.swift">
+        </code>
+        <documentation relative-path="fragment-22.html">
+        </documentation>
+        <code source-file-name="section-23.swift">
+        </code>
+        <documentation relative-path="fragment-24.html">
+        </documentation>
+        <code source-file-name="section-25.swift">
+        </code>
+        <documentation relative-path="fragment-26.html">
+        </documentation>
+        <code source-file-name="section-27.swift">
+        </code>
+        <documentation relative-path="fragment-28.html">
+        </documentation>
+        <code source-file-name="section-29.swift">
+        </code>
+        <documentation relative-path="fragment-30.html">
+        </documentation>
+    </sections>
+</playground>

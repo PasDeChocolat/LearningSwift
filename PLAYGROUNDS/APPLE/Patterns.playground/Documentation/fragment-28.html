@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>  
+        <title>TITLE</title>
+        <link rel="stylesheet" type="text/css" href="style-1.1.15.css" />
+        <meta charset='utf-8'> 
+        <meta id="xcode-display" name="xcode-display" content="render" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name = "viewport" content = "width = device-width, maximum-scale=1.0">
+    </head>
+    <body id="conceptual_flow_with_tasks" class="jazz">
+		<div class="content-wrapper">
+			<article class="chapter>">
+				<section class="section">
+					<div class="note">
+                      <aside class="aside">
+                        <p class="aside-title">Experiment
+                        </p>
+						<p class="para">
+							Add a <code class="code-voice">switch</code> case to the <code class="code-voice">trainDescription</code> function that uses the <code class="code-voice">is</code> pattern to check for a type of <code class="code-voice">Train</code> rather than <code class="code-voice">MaglevTrain</code>. What error do you get? Why?
+						</p>
+						<p class="para">
+							Define a second subclass of <code class="code-voice">Train</code> called <code class="code-voice">SteamTrain</code> and add a case to the <code class="code-voice">trainDescription</code> function to match <code class="code-voice">SteamTrain</code> and return an appropriate description. Call the <code class="code-voice">trainDescription</code> function for a <code class="code-voice">SteamTrain</code> instance to check that your new description is reported correctly.
+						</p>
+                      </aside>
+                    </div>
+					<p class="para">
+						The <code class="code-voice">is</code> pattern only checks whether an object has a specific subclass type. If you want to check <em>and</em> use the object as a subclass type, use the <code class="code-voice">as</code> pattern (which is similar to the <code class="code-voice">as</code> type-casting operator) in a <code class="code-voice">switch</code> statement to check and cast an object simultaneously. Combine the <code class="code-voice">as</code> pattern with the <code class="code-voice">let</code> pattern to bind the cast object to a temporary constant of the more specific type.
+					</p>
+					<p class="para">
+						Here&rsquo;s a function called <code class="code-voice">determineMaintenanceRequirements</code>, which uses the <code class="code-voice">as</code> pattern in a <code class="code-voice">switch</code> statement to check and cast a <code class="code-voice">Train</code> instance as a <code class="code-voice">MaglevTrain</code> instance if it is of the appropriate subclass type. If the cast succeeds, the <code class="code-voice">let</code> pattern provides access to the cast instance as a <code class="code-voice">MaglevTrain</code> instance so that a subclass-specific method can be called. Otherwise, a default case calls the <code class="code-voice">cleanPassengerCars</code> method, which can be called on any <code class="code-voice">Train</code> instance.
+					</p>
+				</section>
+			</article>
+		</div>
+    </body>
+</html>

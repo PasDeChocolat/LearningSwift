@@ -1,0 +1,1 @@
+fizzBuzz(6)

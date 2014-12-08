@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>  
+        <title>TITLE</title>
+        <link rel="stylesheet" type="text/css" href="style-1.1.15.css" />
+        <meta charset='utf-8'> 
+        <meta id="xcode-display" name="xcode-display" content="render" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name = "viewport" content = "width = device-width, maximum-scale=1.0">
+    </head>
+    <body id="conceptual_flow_with_tasks" class="jazz">
+		<div class="content-wrapper">
+			<article class="chapter>">
+				<section class="section">
+    				<p class="para">
+    					The first <code class="code-voice">switch</code> case matches when the train&rsquo;s status is <code class="code-voice">OnTime</code>, and returns a simple string message.
+    				</p>
+					<p class="para">
+						The second <code class="code-voice">switch</code> case is more complex. It starts by using the combined pattern <code class="code-voice">let .Delayed(minutes)</code> to match a <code class="code-voice">Status</code> enumeration case of <code class="code-voice">Delayed</code> and bind its associated integer value to a temporary constant called <code class="code-voice">minutes</code>. This pattern enables you to use the <code class="code-voice">minutes</code> constant inside the <code class="code-voice">switch</code> case&rsquo;s code block to access the associated number of minutes if the pattern is matched.
+					</p>
+					<p class="para">
+						This <code class="code-voice">switch</code> case also adds a <em>guard expression</em> (indicated by the <code class="code-voice">where</code> keyword), which restricts the situations in which the case will be matched. Here, the guard expression matches only when the extracted value of <code class="code-voice">minutes</code> is in the range <code class="code-voice">0...5</code>. This restriction is enforced with the pattern-match (<code class="code-voice">~=</code>) operator.
+					</p>
+					<p class="para">
+						The third and final <code class="code-voice">switch</code> case matches all remaining <code class="code-voice">Delayed</code> cases.
+					</p>
+					<p class="para">
+						You can now create a few <code class="code-voice">Train</code> instances and set some of them to be delayed.
+					</p>
+				</section>
+			</article>
+		</div>
+    </body>
+</html>
