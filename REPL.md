@@ -19,3 +19,6 @@ $ xcrun swift
 // To exit:
 > :exit
 ````
+
+# References
+- [Introduction to the Swift REPL, with Quick Reference](https://developer.apple.com/swift/blog/?id=18)
