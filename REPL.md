@@ -3,7 +3,6 @@
 # Optional
 $ sudo xcode-select -s /Applications/Xcode.app
 
-```` bash
 # Run the SWIFT REPL on Mavericks:
 $ xcrun swift
 
