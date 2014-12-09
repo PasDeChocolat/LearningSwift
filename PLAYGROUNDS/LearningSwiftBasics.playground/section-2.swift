@@ -1,8 +1,30 @@
 import UIKit
 
 
+/*---------------------/
+   Basics
+/---------------------*/
 
-// Optionals
+// This is a comment.
+println("hello") // Another comment
+/* A bigger 
+   ...
+   comment. */
+/* Another
+   big
+/* comment
+   here */
+*/
+
+// You can also import just submodules and features.
+// Features can be var, func, class, struct, enum, protocol, or typealias
+import Foundation.NSDate
+import var Foundation.NSTimeIntervalSince1970
+
+
+/*---------------------/
+   Optionals
+/---------------------*/
 
 let scores = ["kyle": 111, "newton": 80]
 let kylesScore : Int? = scores["kyle"]
@@ -57,6 +79,12 @@ if let orderState = order.person?.address?.state? {
     println("Order is from \(orderState).")
 }
 
+
+/*---------------------/
+   A Taste of Swift
+/---------------------*/
+
+sorted([1,2,5,3,4,1])
 
 
 
