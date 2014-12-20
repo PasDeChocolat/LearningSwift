@@ -174,13 +174,17 @@ letters
 
 // Iterating over arrays...
 let cats = ["morris", "simba", "felix"]
+var catNames = ""
 for cat in cats {
-    println(cat)
+    catNames += cat + " "
 }
+catNames
 
+catNames = ""
 for (index, cat) in enumerate(cats) {
-    println("\(index): \(cat)")
+    catNames += "\(index): \(cat)  "
 }
+catNames
 
 
 // Array algorithms (returning new arrays)...
