@@ -24,3 +24,8 @@
 - [Apple Swift Blog](https://developer.apple.com/swift/blog/)
 - [Apple Swift Resources](https://developer.apple.com/swift/resources/)
 
+### Sample Apps
+- [Adventure: Building a SpriteKit Game Using Swift](https://developer.apple.com/library/ios/samplecode/Adventure-Swift/Introduction/Intro.html)
+- More on SpriteKit (Not specifically about Swift)
+  - [Best Practices for Building SpriteKit Games: WWDC Session 608](http://devstreaming.apple.com/videos/wwdc/2014/608xx0tzmkcqkrn/608/608_hd_best_practices_for_building_spritekit_games.mov?dl=1)
+
