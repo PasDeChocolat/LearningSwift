@@ -18,6 +18,7 @@
 - Paid
   - [Swift Pocket Reference: Programming for iOS and OS X, by Anthony Gray](http://shop.oreilly.com/product/0636920035640.do)
   - [Functional Programming in Swift, by Chris Eidhof, Florian Kugler, and Wouter Swierstra](http://www.objc.io/books/)
+- Style Guide: [The Official raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide)
 
 ### Online
 - [Apple Swift Overview](https://developer.apple.com/swift/)
