@@ -24,6 +24,8 @@ import var Foundation.NSTimeIntervalSince1970
 
 /*---------------------/
    Optionals
+// Why use implicitly unwrapped and lazy properites:
+//   http://www.scottlogic.com/blog/2014/11/20/swift-initialisation.html
 /---------------------*/
 
 let scores = ["kyle": 111, "newton": 80]
