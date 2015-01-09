@@ -43,14 +43,6 @@ let oct = 0o12
 let someNumber = 42_012_123
 
 
-/*--------------------------/
-// println
-/--------------------------*/
-println("hello")
-println("pi is \(3.14)")
-println("pi is \(22.0 / 7.0)")
-
-
 
 
 
