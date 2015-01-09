@@ -23,10 +23,49 @@ import var Foundation.NSTimeIntervalSince1970
 
 
 /*---------------------/
+// Types
+/---------------------*/
+let word = "hello" // This is a String
+let anotherWord : String = "hi"
+
+let doubleNum = 3.14
+let floatNum : Float = 3.14
+
+typealias MyByte = UInt8
+
+
+/*--------------------------/
+// Bin and Hex, and Numbers
+/--------------------------*/
+let binary = 0b01010
+let hex = 0xAB
+let oct = 0o12
+let someNumber = 42_012_123
+
+
+/*--------------------------/
+// println
+/--------------------------*/
+println("hello")
+println("pi is \(3.14)")
+println("pi is \(22.0 / 7.0)")
+
+
+
+
+
+/*---------------------/
    Optionals
 // Why use implicitly unwrapped and lazy properites:
 //   http://www.scottlogic.com/blog/2014/11/20/swift-initialisation.html
 /---------------------*/
+
+var myName : String? // = "Kyle" // to make it have a value
+if myName == nil {
+  "no name here"
+} else {
+  "my name is \(myName)"
+}
 
 let scores = ["kyle": 111, "newton": 80]
 let kylesScore : Int? = scores["kyle"]
