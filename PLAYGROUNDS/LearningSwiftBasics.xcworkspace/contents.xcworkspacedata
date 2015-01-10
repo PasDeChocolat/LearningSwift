@@ -7,4 +7,7 @@
    <FileRef
       location = "group:LearningSwiftBasics_008_Closures.playground">
    </FileRef>
+   <FileRef
+      location = "group:LearningSwiftBasics_009_Optionals.playground">
+   </FileRef>
 </Workspace>

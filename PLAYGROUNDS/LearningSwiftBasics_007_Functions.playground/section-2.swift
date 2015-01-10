@@ -3,6 +3,7 @@ import UIKit
 
 /*--------------------------/
 //  Functions
+//    http://practicalswift.com/2014/06/14/the-swift-standard-library-list-of-built-in-functions/
 /--------------------------*/
 
 // let's add some numbers
