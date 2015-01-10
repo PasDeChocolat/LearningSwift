@@ -7,7 +7,24 @@ import UIKit
 //    http://www.scottlogic.com/blog/2014/11/20/swift-initialisation.html
 /---------------------*/
 
-var myName : String? // = "Kyle" // to make it have a value
+// var aVar: String = nil <-- Not allowed
+var anotherVar: String? = nil
+var word: String
+word = "sdkfj"
+var copied = word
+
+var anOptional: String? = "hi"
+var aCopy = anOptional!
+
+var anotherWord: String! = "hello"
+var anotherCopy: String = anotherWord
+
+anotherWord = nil
+// anotherCopy = anotherWord <--- Not allowed
+
+
+
+var myName: String? // = "Kyle" // to make it have a value
 if myName == nil {
   "no name here"
 } else {
