@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:LearningSwiftBasics_007_Functions.playground">
+   </FileRef>
+   <FileRef
+      location = "group:LearningSwiftBasics_008_Closures.playground">
+   </FileRef>
+</Workspace>

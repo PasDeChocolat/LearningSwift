@@ -2,7 +2,7 @@ import UIKit
 
 
 /*--------------------------/
-// Functions
+//  Functions
 /--------------------------*/
 
 // let's add some numbers
