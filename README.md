@@ -25,12 +25,15 @@ Pull requests and other forms of collaboration welcome.
 - struct and class differences
 - immutability
 - ? ! and optionals
+  - (PLAYGROUNDS/LearningSwiftBasics_009_Optionals.playground)
 - nullability safety rules
 - trailing closures
+  - (PLAYGROUNDS/LearningSwiftBasics_008_Closures.playground)
 - internal and external parameter names, first parameter exception to the rule
 - destructuring
 - generics
 - how to read function signatures, higher order functions
+  - (PLAYGROUNDS/LearningSwiftBasics_007_Functions.playground)
 - list comprehensions
 
 ### Resources
