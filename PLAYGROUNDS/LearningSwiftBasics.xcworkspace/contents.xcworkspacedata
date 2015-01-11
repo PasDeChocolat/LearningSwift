@@ -28,4 +28,7 @@
    <FileRef
       location = "group:LearningSwiftBasics_010_ProgramFlow.playground">
    </FileRef>
+   <FileRef
+      location = "group:LearningSwiftBasics_011_Classes.playground">
+   </FileRef>
 </Workspace>
