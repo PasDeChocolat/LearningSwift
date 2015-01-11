@@ -9,12 +9,20 @@ import UIKit
 //  Methods and Properties
 /--------------------------*/
 struct Circle {
+  // type constant
+  static let pi = 3.14
+  
+  // type method 
+  static func area(# radius: Double) -> Double {
+    return pi * pow(radius, 2.0)
+  }
+  
   // property
   var radius: Double = 10.0
   
   // method
   func area() -> Double {
-    return 3.14 * pow(radius, 2.0)
+    return Circle.area(radius: radius)
   }
   
   // mutating method

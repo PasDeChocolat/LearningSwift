@@ -34,4 +34,7 @@
    <FileRef
       location = "group:LSB_012_Structures.playground">
    </FileRef>
+   <FileRef
+      location = "group:LSB_013_Enumerations.playground">
+   </FileRef>
 </Workspace>
