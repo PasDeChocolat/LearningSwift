@@ -2,33 +2,36 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:LearningSwiftBasics_002_VariablesAndConstants.playground">
+      location = "group:LSB_002_VariablesAndConstants.playground">
    </FileRef>
    <FileRef
-      location = "group:LearningSwiftBasics_003_Tuples.playground">
+      location = "group:LSB_003_Tuples.playground">
    </FileRef>
    <FileRef
-      location = "group:LearningSwiftBasics_004_StringsAndCharacters.playground">
+      location = "group:LSB_004_StringsAndCharacters.playground">
    </FileRef>
    <FileRef
-      location = "group:LearningSwiftBasics_005_Arrays.playground">
+      location = "group:LSB_005_Arrays.playground">
    </FileRef>
    <FileRef
-      location = "group:LearningSwiftBasics_006_Dictionaries.playground">
+      location = "group:LSB_006_Dictionaries.playground">
    </FileRef>
    <FileRef
-      location = "group:LearningSwiftBasics_007_Functions.playground">
+      location = "group:LSB_007_Functions.playground">
    </FileRef>
    <FileRef
-      location = "group:LearningSwiftBasics_008_Closures.playground">
+      location = "group:LSB_008_Closures.playground">
    </FileRef>
    <FileRef
-      location = "group:LearningSwiftBasics_009_Optionals.playground">
+      location = "group:LSB_009_Optionals.playground">
    </FileRef>
    <FileRef
-      location = "group:LearningSwiftBasics_010_ProgramFlow.playground">
+      location = "group:LSB_010_ProgramFlow.playground">
    </FileRef>
    <FileRef
-      location = "group:LearningSwiftBasics_011_Classes.playground">
+      location = "group:LSB_011_Classes.playground">
+   </FileRef>
+   <FileRef
+      location = "group:LSB_012_Structures.playground">
    </FileRef>
 </Workspace>
