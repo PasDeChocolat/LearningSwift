@@ -40,4 +40,10 @@
    <FileRef
       location = "group:LSB_014_Types.playground">
    </FileRef>
+   <FileRef
+      location = "group:LSB_015_Protocols.playground">
+   </FileRef>
+   <FileRef
+      location = "group:LSB_016_MemoryManagement.playground">
+   </FileRef>
 </Workspace>
