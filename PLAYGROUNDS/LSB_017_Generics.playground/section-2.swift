@@ -152,8 +152,9 @@ protocol Stackable {
 
 // Explicit implementation of Stackable protocol with `Int`s
 struct ExplicitStack<Int>: Stackable {
-  var q = [Int]()
   typealias ItemType = Int
+  
+  var q = [ItemType]()
   
   mutating func push(item: ItemType) {
     q.append(item)
