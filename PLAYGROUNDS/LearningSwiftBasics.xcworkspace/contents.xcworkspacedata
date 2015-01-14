@@ -46,4 +46,7 @@
    <FileRef
       location = "group:LSB_016_MemoryManagement.playground">
    </FileRef>
+   <FileRef
+      location = "group:LSB_017_Generics.playground">
+   </FileRef>
 </Workspace>
