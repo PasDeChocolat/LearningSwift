@@ -49,4 +49,7 @@
    <FileRef
       location = "group:LSB_017_Generics.playground">
    </FileRef>
+   <FileRef
+      location = "group:LSB_018_OperatorOverloading.playground">
+   </FileRef>
 </Workspace>
