@@ -62,7 +62,9 @@ vel2D + acc2D
 //  with n dimensions
 /---------------------------------------*/
 struct VV {
-  var c = [Double]() // It's not possible to make this private yet.
+  // It's not possible to make this private yet.
+  // http://airspeedvelocity.net/2014/07/13/swift-structs-and-accessing-properties-by-name/
+  var c = [Double]()
   
   init (_ components: [Double]) {
     c = components

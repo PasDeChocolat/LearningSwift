@@ -52,4 +52,7 @@
    <FileRef
       location = "group:LSB_018_OperatorOverloading.playground">
    </FileRef>
+   <FileRef
+      location = "group:LSB_019_RangesIntervalsStrides.playground">
+   </FileRef>
 </Workspace>
