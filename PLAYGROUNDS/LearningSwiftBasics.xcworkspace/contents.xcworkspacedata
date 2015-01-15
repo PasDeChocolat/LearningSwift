@@ -55,4 +55,7 @@
    <FileRef
       location = "group:LSB_019_RangesIntervalsStrides.playground">
    </FileRef>
+   <FileRef
+      location = "group:LSB_020_GlobalFunctions.playground">
+   </FileRef>
 </Workspace>
