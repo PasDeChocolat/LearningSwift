@@ -1,61 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <FileRef
-      location = "group:LSB_002_VariablesAndConstants.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_003_Tuples.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_004_StringsAndCharacters.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_005_Arrays.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_006_Dictionaries.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_007_Functions.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_008_Closures.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_009_Optionals.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_010_ProgramFlow.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_011_Classes.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_012_Structures.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_013_Enumerations.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_014_Types.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_015_Protocols.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_016_MemoryManagement.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_017_Generics.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_018_OperatorOverloading.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_019_RangesIntervalsStrides.playground">
-   </FileRef>
-   <FileRef
-      location = "group:LSB_020_GlobalFunctions.playground">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "B-Level Playgrounds">
+      <FileRef
+         location = "group:LSB_B001_HigherOrderFunctions.playground">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "A-Level Playgrounds">
+      <FileRef
+         location = "group:LSB_002_VariablesAndConstants.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_003_Tuples.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_004_StringsAndCharacters.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_005_Arrays.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_006_Dictionaries.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_007_Functions.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_008_Closures.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_009_Optionals.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_010_ProgramFlow.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_011_Classes.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_012_Structures.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_013_Enumerations.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_014_Types.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_015_Protocols.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_016_MemoryManagement.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_017_Generics.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_018_OperatorOverloading.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_019_RangesIntervalsStrides.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_020_GlobalFunctions.playground">
+      </FileRef>
+   </Group>
 </Workspace>
