@@ -21,19 +21,24 @@ Pull requests and other forms of collaboration welcome.
 ### Suggested Topics
 - currying
 - pattern matching
+  - (PLAYGROUNDS/LSB_013_Enumerations.playground)
 - initializers
+  - (PLAYGROUNDS/LSB_011_Classes.playground)
 - struct and class differences
 - immutability
 - ? ! and optionals
-  - (PLAYGROUNDS/LearningSwiftBasics_009_Optionals.playground)
+  - (PLAYGROUNDS/LSB_009_Optionals.playground)
 - nullability safety rules
+  - (PLAYGROUNDS/LSB_009_Optionals.playground)
 - trailing closures
-  - (PLAYGROUNDS/LearningSwiftBasics_008_Closures.playground)
+  - (PLAYGROUNDS/LSB_008_Closures.playground)
 - internal and external parameter names, first parameter exception to the rule
 - destructuring
+  - (PLAYGROUNDS/LSB_011_Classes.playground)
 - generics
+  - (PLAYGROUNDS/LSB_017_Generics.playground)
 - how to read function signatures, higher order functions
-  - (PLAYGROUNDS/LearningSwiftBasics_007_Functions.playground)
+  - (PLAYGROUNDS/LSB_007_Functions.playground)
 - list comprehensions
 
 ### Resources
