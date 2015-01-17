@@ -366,6 +366,16 @@ h(1)
 /*------------------------------------/
 //  Currying
 /------------------------------------*/
+
+// You might do it like this
+func add(x:Int) -> (Int) -> Int {
+  return { y in x + y }
+}
+let addTo1000 = add(1000)
+addTo1000(2)
+
+
+// But that's less flexible than applying curry to an existing function
 func curry <A, B, C>(f: (A, B) -> C) -> A -> B -> C {
   return { x in { y in f(x, y) } }
 }
