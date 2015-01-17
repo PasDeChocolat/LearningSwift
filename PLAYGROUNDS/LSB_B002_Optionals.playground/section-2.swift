@@ -28,6 +28,13 @@ let mappedNil = optNil.map { x in x + 1 }
 if mappedNil == nil { "mappedNil is nil" }
 
 
+// Conveniently give yourself a default value.
+// (Note: return type is `String`, not optional `String?`)
+func greet(name: String?) -> String {
+  return name.map { name in "Hello, \(name)." } ?? "Hello there!"
+}
+greet("Fred")
+greet(nil)
 
 
 
