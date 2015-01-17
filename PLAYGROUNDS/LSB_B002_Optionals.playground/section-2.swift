@@ -10,10 +10,13 @@ import UIKit
 
 
 
-/*------------------------------------/
-//  Map
-/------------------------------------*/
-
+/*-----------------------------------------------/
+//  Map is also a Swift function on optionals.
+/-----------------------------------------------*/
+let optional: Int? = 0
+let mapped = optional.map { x in x + 1 }
+optional!
+mapped!
 
 
 
