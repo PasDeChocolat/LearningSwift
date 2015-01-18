@@ -27,6 +27,10 @@ struct Trie<T: Hashable> {
   
   var isElem: Bool
   var children: Children
+  
+  subscript(index: T) -> Trie<T>? {
+    return self.children[index]
+  }
 }
 
 
@@ -129,6 +133,8 @@ catr.children["c"]!.children["a"]!.children["t"]!
 catr.children["c"]!.children["a"]!.children["t"]!.isElem
 
 
+// Also, can use custom subscript notation
+catr["c"]!
 
 
 
