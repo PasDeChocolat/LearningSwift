@@ -13,6 +13,9 @@
       <FileRef
          location = "group:LSB_B003_ClassesAndStructs.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_B004_DataStructures.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
