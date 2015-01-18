@@ -127,10 +127,10 @@ elements(bigTree)
 
 
 /*---------------------------------------------------------/
-// Custom operator for adding values to a set
+//  Custom operator for adding values to a set
 //
-// Suggested Reading:
-//   http://nshipster.com/swift-operators/
+//  Suggested Reading:
+//    http://nshipster.com/swift-operators/
 /---------------------------------------------------------*/
 infix operator |> { associativity right }
 func |><T: Comparable>(x: T, tree: Tree<T>) -> Tree<T> {
@@ -148,6 +148,85 @@ func <|<T: Comparable>(tree: Tree<T>, x: T) -> Tree<T> {
 }
 var biggerTree2 = single(10) <| 5 <| 42 <| 100 <| 32
 elements(biggerTree2)
+
+
+/*---------------------------------------------------------/
+//  More set operations
+/---------------------------------------------------------*/
+func emptySet<T>() -> Tree<T> {
+  return Tree.Leaf
+}
+
+func isEmptySet<T>(tree: Tree<T>) -> Bool {
+  switch tree {
+  case let Tree.Leaf:
+    return true
+  case Tree.Node:
+    return false
+  }
+}
+
+isEmptySet(biggerTree)
+
+let empty: Tree<Int> = emptySet()
+isEmptySet(empty)
+
+
+// Need a helper method to check if predicate is true for all members
+func all<T>(xs: [T], predicate: T -> Bool) -> Bool {
+  for x in xs {
+    if !predicate(x) { return false }
+  }
+  return true
+}
+
+
+// Verify the set in a binary search tree
+func isBST<T: Comparable>(tree: Tree<T>) -> Bool {
+  switch tree {
+  case Tree.Leaf:
+    return true
+  case let Tree.Node(left, x, right):
+    let leftElements = elements(left.unbox)
+    let rightElements = elements(right.unbox)
+    return
+      all(leftElements)  { y in y < x.unbox } &&
+      all(rightElements) { y in y > x.unbox } &&
+      isBST(left.unbox) &&
+      isBST(right.unbox)
+  }
+}
+isBST(biggerTree2)
+
+
+// Check for set membership
+func setContains<T: Comparable>(x: T, tree: Tree<T>) -> Bool {
+  switch tree {
+  case Tree.Leaf:
+    return false
+    
+  case let Tree.Node(left, y, right) where x == y.unbox:
+    // found match
+    return true
+    
+  case let Tree.Node(left, y, right) where x < y.unbox:
+    // search value is smaller
+    return setContains(x, left.unbox)
+    
+  case let Tree.Node(left, y, right) where x > y.unbox:
+    // search value is bigger
+    return setContains(x, right.unbox)
+    
+  default:
+    assert(false, "Unexpected failure!")
+  }
+}
+setContains(42, biggerTree2)
+setContains(1000, biggerTree2)
+
+
+
+
 
 
 
