@@ -207,4 +207,17 @@ autocomplete(["c", "a"], catrt)
 autocomplete(["c", "a", "r"], catrt)
 
 
+/*---------------------------------------------------------/
+//  String to Character Array helper
+/---------------------------------------------------------*/
+func str2char(key: String) -> [Character] {
+  var result = [Character]()
+  for c in key {
+    result.append(c)
+  }
+  return result
+}
+autocomplete(str2char("c"), catrt)
+autocomplete(str2char("ca"), catrt)
+autocomplete(str2char("car"), catrt)
 
