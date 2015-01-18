@@ -121,6 +121,9 @@ func trieInsert<T: Hashable>(key: [T], trie: Trie<T>) -> Trie<T> {
 // test with "cat"
 var root: Trie<Character> = empty()
 let cat = trieInsert(["c", "a", "t"], root)
+elements(cat)
+root.children // root is immutable
+
 cat.isElem
 cat.children["c"]!
 cat.children["c"]!.isElem
@@ -128,10 +131,11 @@ cat.children["c"]!.children["a"]!
 cat.children["c"]!.children["a"]!.isElem
 cat.children["c"]!.children["a"]!.children["t"]!
 cat.children["c"]!.children["a"]!.children["t"]!.isElem
-root.children
 
 // add another word, "car"
 let catr = trieInsert(["c", "a", "r"], cat)
+elements(catr) // car *and* cat are included
+
 catr.isElem
 catr.children["c"]!
 catr.children["c"]!.isElem
@@ -141,15 +145,66 @@ catr.children["c"]!.children["a"]!.children
 catr.children["c"]!.children["a"]!.children["r"]!
 catr.children["c"]!.children["a"]!.children["r"]!.isElem
 
-// "cat" remains element:
-catr.children["c"]!.children["a"]!.children["t"]!
-catr.children["c"]!.children["a"]!.children["t"]!.isElem
-
 
 // Also, can use custom subscript notation
 catr["c"]!
 
 
+/*---------------------------------------------------------/
+//  Methods on Tries: Lookup
+/---------------------------------------------------------*/
+func lookup<T: Hashable>(key: [T], trie: Trie<T>) -> Bool {
+  if let (head, tail) = key.decompose {
+    if let subtrie = trie.children[head] {
+      return lookup(tail, subtrie)
+    } else {
+      return false
+    }
+  } else {
+    return trie.isElem
+  }
+}
+lookup(["c", "a", "t"], catr)
+lookup(["c", "a", "r"], catr)
+lookup(["c", "a"], catr)
+lookup(["c", "a", "r", "t"], catr)
+
+
+/*---------------------------------------------------------/
+//  Methods on Tries: withPrefix
+/---------------------------------------------------------*/
+func withPrefix<T: Hashable>(prefix: [T], trie: Trie<T>) -> Trie<T>? {
+  if let (head, tail) = prefix.decompose {
+    if let remainder = trie.children[head] {
+      return withPrefix(tail, remainder)
+    } else {
+      return nil
+    }
+  } else {
+    return trie
+  }
+}
+if let cResult = withPrefix(["c"], catr) {
+  cResult
+  cResult["a"]!
+  elements(cResult)
+}
+
+
+/*---------------------------------------------------------/
+//  Methods on Tries: autocomplete
+/---------------------------------------------------------*/
+func autocomplete<T: Hashable>(key: [T], trie: Trie<T>) -> [[T]] {
+  if let prefixTrie = withPrefix(key, trie) {
+    return elements(prefixTrie)
+  } else {
+    return []
+  }
+}
+let catrt = trieInsert(["c", "a", "r", "t"], catr)
+autocomplete(["c"], catrt)
+autocomplete(["c", "a"], catrt)
+autocomplete(["c", "a", "r"], catrt)
 
 
 
