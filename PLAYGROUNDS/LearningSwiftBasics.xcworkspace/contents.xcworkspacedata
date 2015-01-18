@@ -10,6 +10,9 @@
       <FileRef
          location = "group:LSB_B002_Optionals.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_B003_ClassesAndStructs.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
