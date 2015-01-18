@@ -37,4 +37,72 @@ greet("Fred")
 greet(nil)
 
 
+/*-----------------------------------------------/
+//  ?? in depth
+/-----------------------------------------------*/
+struct Eval {
+  var x: String {
+    println("computing...")
+    return "x"
+  }
+}
+// Note the "console output" when this gets evaluated
+//Eval().x
+
+let aNil: String? = nil
+var x: String?
+//x = aNil ?? Eval().x
+
+// Doesn't eval x, unless it needs to...
+x = "hello" ?? Eval().x
+
+
+/*-----------------------------------------------/
+//  More Optional Chaining
+/-----------------------------------------------*/
+let capitals = ["France": "Paris", "USA": "Washington DC"]
+let cities = ["Paris": 2_273, "Washington DC":659]
+
+// This is a recurring pattern.
+func popOfCapitolOfCountry(country: String) -> Int? {
+  if let capital = capitals[country] {
+    if let population = cities[capital] {
+      return population * 1_000
+    }
+  }
+  return nil
+}
+
+popOfCapitolOfCountry("France")
+popOfCapitolOfCountry("USA")
+popOfCapitolOfCountry("Canada")
+
+
+// Try this operator from Functional Programming in Swift
+infix operator >>= {}
+func >>=<U, T>(optional: T?, f: T -> U?) -> U? {
+  if let x = optional {
+    return f(x)
+  } else {
+    return nil
+  }
+}
+
+func popOfCapitolOfCountry2(country: String) -> Int? {
+  return
+    capitals[country] >>= { capital in
+      cities[capital] >>= { population in
+        return population * 1_000
+    }
+  }
+}
+
+popOfCapitolOfCountry2("France")
+popOfCapitolOfCountry2("USA")
+popOfCapitolOfCountry2("Canada")
+
+
+
+
+
 
