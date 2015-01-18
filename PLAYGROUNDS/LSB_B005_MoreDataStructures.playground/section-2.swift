@@ -81,6 +81,19 @@ sum([42])
 sum([1, 3, 5])
 
 
+// Qsort, as another exercise
+func qsort (var input: [Int]) -> [Int] {
+  if let (pivot, rest) = input.decompose {
+    let lesser = rest.filter { $0 < pivot }
+    let greater = rest.filter { $0 > pivot }
+    return qsort(lesser) + [pivot] + qsort(greater)
+  } else {
+    return []
+  }
+}
+qsort([42, 34, 100, 1, 3])
+
+
 /*---------------------------------------------------------/
 //  Insert into trie
 /---------------------------------------------------------*/
