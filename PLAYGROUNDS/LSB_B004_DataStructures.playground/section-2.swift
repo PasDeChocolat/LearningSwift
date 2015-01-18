@@ -2,6 +2,10 @@ import UIKit
 
 /*
 //  Data Structures
+//
+//  Suggested Reading:
+//  http://www.objc.io/books/ (Chapter 9)
+//    (Functional Programming in Swift, by Chris Eidhof, Florian Kugler, and Wouter Swierstra)
 /===================================*/
 
 
