@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <FileRef
+      location = "group:FunctionalDiagrams/FunctionalDiagrams.xcodeproj">
+   </FileRef>
    <Group
       location = "container:"
       name = "B-Level Playgrounds">
@@ -21,6 +24,9 @@
       </FileRef>
       <FileRef
          location = "group:LSB_B006_DiagramsOSX.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_B007_DiagramsIOS.playground">
       </FileRef>
    </Group>
    <Group

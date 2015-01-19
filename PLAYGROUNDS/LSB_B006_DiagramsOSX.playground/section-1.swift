@@ -4,7 +4,7 @@ import Cocoa
 //  Diagrams, a DSL
 //
 //  Suggested Reading:
-//  http://www.objc.io/books/ (Chapter 9)
+//  http://www.objc.io/books/ (Chapter 10)
 //    (Functional Programming in Swift, by Chris Eidhof, Florian Kugler, and Wouter Swierstra)
 /===================================*/
 
@@ -411,8 +411,8 @@ func writepdf(name: String, diagram: Diagram) -> Bool {
 }
 
 docDirURLString()
-writepdf("example1", example1)
-writepdf("example2", example2)
+//writepdf("example1", example1)
+//writepdf("example2", example2)
 
 
 /*---------------------------------------------------------/
@@ -434,12 +434,12 @@ let cities = ["Shanghai": 14.01, "Istanbul": 13.3,
   "Moscow": 10.56, "New York": 8.33, "Berlin": 3.43]
 let example3 = barGraph(cities.keysAndValues)
 
-writepdf("example3", example3)
+//writepdf("example3", example3)
 
 
 /*---------------------------------------------------------/
 //  More Examples
 /---------------------------------------------------------*/
-writepdf("example4", blueSquare ||| redSquare)
-writepdf("example5", Diagram.Align(Vector2D(x: 0.5, y: 1), Box(blueSquare)) ||| redSquare)
+//writepdf("example4", blueSquare ||| redSquare)
+//writepdf("example5", Diagram.Align(Vector2D(x: 0.5, y: 1), Box(blueSquare)) ||| redSquare)
 
