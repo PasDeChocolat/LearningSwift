@@ -363,7 +363,17 @@ extension Diagram {
 
 
 /*---------------------------------------------------------/
-//  Examples
+//  Helper for Horizontal Concatenation of Diagrams
+/---------------------------------------------------------*/
+let empty: Diagram = rect(width: 0, height: 0)
+
+func hcat(diagrams: [Diagram]) -> Diagram {
+  return diagrams.reduce(empty, combine: |||)
+}
+
+
+/*---------------------------------------------------------/
+//  Examples: Shapes
 /---------------------------------------------------------*/
 let blueSquare = square(side: 1).fill(NSColor.blueColor())
 let redSquare = square(side: 2).fill(NSColor.redColor())
@@ -402,3 +412,34 @@ func writepdf(name: String, diagram: Diagram) -> Bool {
 
 docDirURLString()
 writepdf("example1", example1)
+writepdf("example2", example2)
+
+
+/*---------------------------------------------------------/
+//  Examples: Bar Graph
+/---------------------------------------------------------*/
+func barGraph(input: [(String, Double)]) -> Diagram {
+  let values: [CGFloat] = input.map { CGFloat($0.1) }
+  let nValues = normalize(values)
+  let bars = hcat(nValues.map { (x: CGFloat) -> Diagram in
+    return rect(width: 1, height: 3 * x)
+      .fill(NSColor.blackColor()).alignBottom()
+    })
+  let labels = hcat(input.map { x in
+    return text(width: 1, height: 0.3, text: x.0).alignTop()
+    })
+  return bars --- labels
+}
+let cities = ["Shanghai": 14.01, "Istanbul": 13.3,
+  "Moscow": 10.56, "New York": 8.33, "Berlin": 3.43]
+let example3 = barGraph(cities.keysAndValues)
+
+writepdf("example3", example3)
+
+
+/*---------------------------------------------------------/
+//  More Examples
+/---------------------------------------------------------*/
+writepdf("example4", blueSquare ||| redSquare)
+writepdf("example5", Diagram.Align(Vector2D(x: 0.5, y: 1), Box(blueSquare)) ||| redSquare)
+
