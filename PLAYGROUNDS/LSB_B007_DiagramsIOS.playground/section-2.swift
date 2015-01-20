@@ -61,48 +61,21 @@ class DrawView: UIView {
     fatalError("NSCoding not supported")
   }
   
-//  override func drawRect(dirtyRect: CGRect) {
+  override func drawRect(dirtyRect: CGRect) {
 //    if let context = NSGraphicsContext.currentContext() {
-//      draw(context.cgContext, self.bounds, diagram)
-//    }
-//  }
+    if let context = UIGraphicsGetCurrentContext() {
+      draw(context, self.bounds, diagram)
+    }
+  }
 }
+let dView = DrawView(frame: CGRect(x: 0, y: 0, width: 200, height: 200), diagram: blueSquare)
+//dView.drawRect(CGRectZero)
 
 
 
 
 
 
-//func docDirURL() -> NSURL {
-//  return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
-//}
-//
-//func docDirURLString() -> String {
-//  return "\(docDirURL())"
-//}
-
-//func writepdf(name: String, diagram: Diagram) -> Bool {
-//  let data = pdf(diagram, 300)
-//  var error: NSError? = nil
-//  
-//  // get URL to the the documents directory in the sandbox
-//  let documentsUrl = docDirURL()
-//  
-//  // add a filename
-//  let fileUrl = documentsUrl.URLByAppendingPathComponent("\(name).pdf")
-//  println("PDF written to: \(fileUrl)")
-//  data.writeToURL(fileUrl, options: NSDataWritingOptions.AtomicWrite, error: &error)
-//  if let e = error {
-//    println(e.description)
-//    return false
-//  } else {
-//    return true
-//  }
-//}
-
-//docDirURLString()
-//writepdf("example1", example1)
-//writepdf("example2", example2)
 
 
 

@@ -75,7 +75,7 @@ public func fit(alignment: Vector2D,
 /*---------------------------------------------------------/
 //  fit - Sizing and placing diagrams
 /---------------------------------------------------------*/
-func draw(context: CGContextRef, bounds: CGRect, diagram: Diagram) {
+public func draw(context: CGContextRef, bounds: CGRect, diagram: Diagram) {
   switch diagram {
   case .Prim(let size, .Ellipse):
     let frame = fit(Vector2D(x: 0.5, y: 0.5), size, bounds)
