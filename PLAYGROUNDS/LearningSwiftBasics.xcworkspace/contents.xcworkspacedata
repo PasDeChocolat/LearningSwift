@@ -28,6 +28,9 @@
       <FileRef
          location = "group:LSB_B007_DiagramsIOS.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_B008_DrawingPolygons.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"

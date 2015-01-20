@@ -48,6 +48,31 @@ let cyanCircle = circle(diameter: 1).fill(UIColor.cyanColor())
 let example2 = blueSquare ||| cyanCircle |||
   redSquare ||| greenCircle
 
+
+class DrawView: UIView {
+  let diagram: Diagram
+  
+  init(frame frameRect: CGRect, diagram: Diagram) {
+    self.diagram = diagram
+    super.init(frame:frameRect)
+  }
+  
+  required init(coder: NSCoder) {
+    fatalError("NSCoding not supported")
+  }
+  
+//  override func drawRect(dirtyRect: CGRect) {
+//    if let context = NSGraphicsContext.currentContext() {
+//      draw(context.cgContext, self.bounds, diagram)
+//    }
+//  }
+}
+
+
+
+
+
+
 //func docDirURL() -> NSURL {
 //  return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
 //}
