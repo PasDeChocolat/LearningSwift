@@ -15,7 +15,6 @@
 		CFBBEE7E1A6DBF46000C547E /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBBEE7D1A6DBF46000C547E /* CGSize.swift */; };
 		CFBBEE801A6DBF73000C547E /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBBEE7F1A6DBF73000C547E /* CGRect.swift */; };
 		CFBBEE821A6DBFA0000C547E /* Vector2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBBEE811A6DBFA0000C547E /* Vector2D.swift */; };
-		CFBBEE841A6DBFBE000C547E /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBBEE831A6DBFBE000C547E /* Dictionary.swift */; };
 		CFBBEE861A6DC006000C547E /* Diagrams.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBBEE851A6DC006000C547E /* Diagrams.swift */; };
 		CFBBEE881A6DC072000C547E /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBBEE871A6DC072000C547E /* Draw.swift */; };
 /* End PBXBuildFile section */
@@ -42,7 +41,6 @@
 		CFBBEE7D1A6DBF46000C547E /* CGSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		CFBBEE7F1A6DBF73000C547E /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		CFBBEE811A6DBFA0000C547E /* Vector2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2D.swift; sourceTree = "<group>"; };
-		CFBBEE831A6DBFBE000C547E /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		CFBBEE851A6DC006000C547E /* Diagrams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diagrams.swift; sourceTree = "<group>"; };
 		CFBBEE871A6DC072000C547E /* Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Draw.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,7 +92,6 @@
 				CFBBEE7D1A6DBF46000C547E /* CGSize.swift */,
 				CFBBEE7F1A6DBF73000C547E /* CGRect.swift */,
 				CFBBEE811A6DBFA0000C547E /* Vector2D.swift */,
-				CFBBEE831A6DBFBE000C547E /* Dictionary.swift */,
 				CFBBEE851A6DC006000C547E /* Diagrams.swift */,
 				CFBBEE871A6DC072000C547E /* Draw.swift */,
 			);
@@ -240,7 +237,6 @@
 				CF2128711A6DB9C10063A345 /* Operators.swift in Sources */,
 				CFBBEE801A6DBF73000C547E /* CGRect.swift in Sources */,
 				CFBBEE821A6DBFA0000C547E /* Vector2D.swift in Sources */,
-				CFBBEE841A6DBFBE000C547E /* Dictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

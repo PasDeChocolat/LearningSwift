@@ -37,7 +37,7 @@ func splitRect(rect: CGRect, sizeRatio: CGSize,
     return (mySlice, myRemainder)
 }
 
-func splitHorizontal(rect: CGRect,
+public func splitHorizontal(rect: CGRect,
   ratio: CGSize) -> (CGRect, CGRect) {
     
     return splitRect(rect, ratio, CGRectEdge.MinXEdge)
@@ -46,11 +46,11 @@ func splitHorizontal(rect: CGRect,
 public func splitVertical(rect: CGRect,
   ratio: CGSize) -> (CGRect, CGRect) {
     
-    return splitRect(rect, ratio, CGRectEdge.MinYEdge)
+    return splitRect(rect, ratio, CGRectEdge.MaxYEdge)
 }
 
 
-func normalize(input: [CGFloat]) -> [CGFloat] {
+public func normalize(input: [CGFloat]) -> [CGFloat] {
   let maxVal = input.reduce(0) { max($0, $1) }
   return input.map { $0 / maxVal }
 }
@@ -85,7 +85,6 @@ public func draw(context: CGContextRef, bounds: CGRect, diagram: Diagram) {
     CGContextFillRect(context, frame)
   case .Prim(let size, .Text(let text)):
     let frame = fit(Vector2D(x: 0.5, y: 0.5), size, bounds)
-    //    let font = NSFont.systemFontOfSize(12)
     let font = UIFont.systemFontOfSize(12)
     let attributes = [NSFontAttributeName: font]
     let attributedText = NSAttributedString(
@@ -108,8 +107,8 @@ public func draw(context: CGContextRef, bounds: CGRect, diagram: Diagram) {
     let b = bottom.unbox
     let (lFrame, rFrame) = splitVertical(
       bounds, b.size/diagram.size)
-    draw(context, lFrame, b)
     draw(context, rFrame, t)
+    draw(context, lFrame, b)
   case .Align(let vec, let d):
     let diagram = d.unbox
     let frame = fit(vec, diagram.size, bounds)
@@ -123,7 +122,7 @@ public func draw(context: CGContextRef, bounds: CGRect, diagram: Diagram) {
 /---------------------------------------------------------*/
 let empty: Diagram = rect(width: 0, height: 0)
 
-func hcat(diagrams: [Diagram]) -> Diagram {
+public func hcat(diagrams: [Diagram]) -> Diagram {
   return diagrams.reduce(empty, combine: |||)
 }
 

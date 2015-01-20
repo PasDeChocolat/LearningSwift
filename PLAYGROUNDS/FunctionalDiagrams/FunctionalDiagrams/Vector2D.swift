@@ -24,6 +24,6 @@ public struct Vector2D {
   }
 }
 
-func *(m: CGFloat, v: Vector2D) -> Vector2D {
+public func *(m: CGFloat, v: Vector2D) -> Vector2D {
   return Vector2D(x: m * v.x, y: m * v.y)
 }

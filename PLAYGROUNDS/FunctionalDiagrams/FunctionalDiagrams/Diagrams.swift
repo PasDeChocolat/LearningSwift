@@ -78,12 +78,12 @@ extension Diagram {
       Box(self))
   }
   
-  func alignTop() -> Diagram {
-    return Diagram.Align(Vector2D(x: 0.5, y: 1), Box(self))
+  public func alignTop() -> Diagram {
+    return Diagram.Align(Vector2D(x: 0.5, y: 0), Box(self))
   }
   
-  func alignBottom() -> Diagram {
-    return Diagram.Align(Vector2D(x:0.5, y: 0), Box(self))
+  public func alignBottom() -> Diagram {
+    return Diagram.Align(Vector2D(x:0.5, y: 1), Box(self))
   }
 }
 
@@ -91,7 +91,7 @@ extension Diagram {
 /*---------------------------------------------------------/
 //  Helpers Functions
 /---------------------------------------------------------*/
-func rect(#width: CGFloat, #height: CGFloat) -> Diagram {
+public func rect(#width: CGFloat, #height: CGFloat) -> Diagram {
   return Diagram.Prim(CGSizeMake(width, height), .Rectangle)
 }
 
@@ -99,7 +99,7 @@ public func circle(#diameter: CGFloat) -> Diagram {
   return Diagram.Prim(CGSizeMake(diameter, diameter), .Ellipse)
 }
 
-func text(#width: CGFloat,
+public func text(#width: CGFloat,
   #height: CGFloat, text theText: String) -> Diagram {
     
     return Diagram.Prim(CGSizeMake(width, height), .Text(theText))

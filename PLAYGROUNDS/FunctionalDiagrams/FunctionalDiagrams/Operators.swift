@@ -12,12 +12,12 @@ import Foundation
 /*---------------------------------------------------------/
 //  Operators
 /---------------------------------------------------------*/
-func *(l: CGPoint, r: CGRect) -> CGPoint {
+public func *(l: CGPoint, r: CGRect) -> CGPoint {
   return CGPointMake(r.origin.x + l.x*r.size.width,
     r.origin.y + l.y*r.size.height)
 }
 
-func *(l: CGFloat, r: CGPoint) -> CGPoint {
+public func *(l: CGFloat, r: CGPoint) -> CGPoint {
   return CGPointMake(l*r.x, l*r.y)
 }
 public func *(l: CGFloat, r: CGSize) -> CGSize {
@@ -42,7 +42,7 @@ public func /(l: CGSize, r: CGSize) -> CGSize {
 public func *(l: CGSize, r: CGSize) -> CGSize {
   return pointWise(*, l, r)
 }
-func +(l: CGSize, r: CGSize) -> CGSize {
+public func +(l: CGSize, r: CGSize) -> CGSize {
   return pointWise(+, l, r)
 }
 public func -(l: CGSize, r: CGSize) -> CGSize {
@@ -52,10 +52,10 @@ public func -(l: CGSize, r: CGSize) -> CGSize {
 public func -(l: CGPoint, r: CGPoint) -> CGPoint {
   return pointWise(-, l, r)
 }
-func +(l: CGPoint, r: CGPoint) -> CGPoint {
+public func +(l: CGPoint, r: CGPoint) -> CGPoint {
   return pointWise(+, l, r)
 }
-func *(l: CGPoint, r: CGPoint) -> CGPoint {
+public func *(l: CGPoint, r: CGPoint) -> CGPoint {
   return pointWise(*, l, r)
 }
 

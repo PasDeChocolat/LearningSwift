@@ -49,6 +49,9 @@ let example2 = blueSquare ||| cyanCircle |||
   redSquare ||| greenCircle
 
 
+/*---------------------------------------------------------/
+//  Naive custom UIView for drawing diagrams
+/---------------------------------------------------------*/
 class DrawView: UIView {
   let diagram: Diagram
   
@@ -62,18 +65,45 @@ class DrawView: UIView {
   }
   
   override func drawRect(dirtyRect: CGRect) {
-//    if let context = NSGraphicsContext.currentContext() {
     if let context = UIGraphicsGetCurrentContext() {
       draw(context, self.bounds, diagram)
     }
   }
 }
-let dView = DrawView(frame: CGRect(x: 0, y: 0, width: 200, height: 200), diagram: blueSquare)
-//dView.drawRect(CGRectZero)
+
+DrawView(frame: CGRect(x: 0, y: 0, width: 200, height: 200), diagram: blueSquare)
+DrawView(frame: CGRect(x: 0, y: 0, width: 320, height: 480), diagram: example2)
 
 
+/*---------------------------------------------------------/
+//  Bar graph example
+/---------------------------------------------------------*/
+extension Dictionary {
+  var keysAndValues: [(Key, Value)] {
+    var result: [(Key, Value)] = []
+    for item in self {
+      result.append(item)
+    }
+    return result
+  }
+}
 
-
+func barGraph(input: [(String, Double)]) -> Diagram {
+  let values: [CGFloat] = input.map { CGFloat($0.1) }
+  let nValues = normalize(values)
+  let bars = hcat(nValues.map { (x: CGFloat) -> Diagram in
+    return rect(width: 1, height: 3 * x)
+      .fill(UIColor.blackColor()).alignBottom()
+    })
+  let labels = hcat(input.map { x in
+    return text(width: 1, height: 0.3, text: x.0).alignTop()
+    })
+  return bars --- labels
+}
+let cities = ["Shanghai": 14.01, "Istanbul": 13.3, "Moscow": 10.56, "New York": 8.33, "Berlin": 3.43]
+let example3 = barGraph(cities.keysAndValues)
+let ex3View = DrawView(frame: CGRect(x: 0, y: 0, width: 320, height: 480), diagram: example3)
+ex3View.backgroundColor = UIColor.whiteColor()
 
 
 
