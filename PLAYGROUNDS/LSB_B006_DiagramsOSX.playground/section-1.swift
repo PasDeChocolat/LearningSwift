@@ -391,7 +391,12 @@ func docDirURLString() -> String {
   return "\(docDirURL())"
 }
 
-func writepdf(name: String, diagram: Diagram) -> Bool {
+enum PDFResult {
+  case Success
+  case Error(String)
+}
+
+func writepdf(name: String, diagram: Diagram) -> PDFResult {
   let data = pdf(diagram, 300)
   var error: NSError? = nil
   
@@ -400,19 +405,29 @@ func writepdf(name: String, diagram: Diagram) -> Bool {
   
   // add a filename
   let fileUrl = documentsUrl.URLByAppendingPathComponent("\(name).pdf")
-  println("PDF written to: \(fileUrl)")
+//  println("PDF written to: \(fileUrl)")
   data.writeToURL(fileUrl, options: NSDataWritingOptions.AtomicWrite, error: &error)
   if let e = error {
-    println(e.description)
-    return false
+    return PDFResult.Error(e.description)
   } else {
-    return true
+    return PDFResult.Success
   }
 }
 
-docDirURLString()
-//writepdf("example1", example1)
-//writepdf("example2", example2)
+func verifyPDFWrite(name: String, diagram: Diagram) -> String {
+  switch writepdf(name, diagram) {
+  case PDFResult.Success:
+    return "successfully written to \(docDirURLString())"
+  case let PDFResult.Error(error):
+    return error
+  }
+}
+
+// PDF files are written to:
+//docDirURLString()
+
+//verifyPDFWrite("example1", example1)
+//verifyPDFWrite("example2", example2)
 
 
 /*---------------------------------------------------------/
@@ -434,12 +449,12 @@ let cities = ["Shanghai": 14.01, "Istanbul": 13.3,
   "Moscow": 10.56, "New York": 8.33, "Berlin": 3.43]
 let example3 = barGraph(cities.keysAndValues)
 
-//writepdf("example3", example3)
+//verifyPDFWrite("example3", example3)
 
 
 /*---------------------------------------------------------/
 //  More Examples
 /---------------------------------------------------------*/
-//writepdf("example4", blueSquare ||| redSquare)
-//writepdf("example5", Diagram.Align(Vector2D(x: 0.5, y: 1), Box(blueSquare)) ||| redSquare)
+//verifyPDFWrite("example4", blueSquare ||| redSquare)
+//verifyPDFWrite("example5", Diagram.Align(Vector2D(x: 0.5, y: 1), Box(blueSquare)) ||| redSquare)
 
