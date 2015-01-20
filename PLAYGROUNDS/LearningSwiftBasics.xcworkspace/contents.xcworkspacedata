@@ -31,6 +31,9 @@
       <FileRef
          location = "group:LSB_B008_DrawingPolygons.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_B009_PatternMatching.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
