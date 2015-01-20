@@ -10,7 +10,7 @@ import Foundation
 
 
 extension CGRect {
-  init(center: CGPoint, size: CGSize) {
+  public init(center: CGPoint, size: CGSize) {
     let origin = CGPointMake(center.x - size.width/2,
       center.y - size.height/2)
     self.init(origin: origin, size: size)

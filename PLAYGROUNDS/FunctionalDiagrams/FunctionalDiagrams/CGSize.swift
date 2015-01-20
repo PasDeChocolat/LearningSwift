@@ -10,7 +10,7 @@ import Foundation
 
 
 extension CGSize {
-  var point : CGPoint {
+  public var point : CGPoint {
     return CGPointMake(self.width, self.height)
   }
 }

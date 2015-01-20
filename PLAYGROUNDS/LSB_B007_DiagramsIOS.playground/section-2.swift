@@ -78,6 +78,9 @@ DrawView(frame: CGRect(x: 0, y: 0, width: 320, height: 480), diagram: example2)
 /*---------------------------------------------------------/
 //  Bar graph example
 /---------------------------------------------------------*/
+// Swift does not currently support adding a public
+// declaration to an extension of a generic type from a 
+// different module. (2015/1/19)
 extension Dictionary {
   var keysAndValues: [(Key, Value)] {
     var result: [(Key, Value)] = []
@@ -104,9 +107,5 @@ let cities = ["Shanghai": 14.01, "Istanbul": 13.3, "Moscow": 10.56, "New York": 
 let example3 = barGraph(cities.keysAndValues)
 let ex3View = DrawView(frame: CGRect(x: 0, y: 0, width: 320, height: 480), diagram: example3)
 ex3View.backgroundColor = UIColor.whiteColor()
-
-
-
-
 
 
