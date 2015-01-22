@@ -6,6 +6,13 @@
    </FileRef>
    <Group
       location = "container:"
+      name = "C-Level Playgrounds">
+      <FileRef
+         location = "group:LSB_C001_DecomposingArrays.playground">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
       name = "B-Level Playgrounds">
       <FileRef
          location = "group:LSB_B001_HigherOrderFunctions.playground">
