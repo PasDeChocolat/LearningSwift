@@ -10,6 +10,9 @@
       <FileRef
          location = "group:LSB_C001_DecomposingArrays.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_C002_FunctionComposition.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
