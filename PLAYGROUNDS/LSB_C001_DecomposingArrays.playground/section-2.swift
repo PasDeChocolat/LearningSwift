@@ -30,3 +30,18 @@ sum([5])
 sum([1, 2, 3])
 sum([])
 
+
+/*------------------------------------/
+//  Quicksort
+/------------------------------------*/
+func qsort (var input: [Int]) -> [Int] {
+  if let (pivot, rest) = input.decompose {
+    let lesser = rest.filter { $0 < pivot }
+    let greater = rest.filter { $0 > pivot }
+    return qsort(lesser) + [pivot] + qsort(greater)
+  } else {
+    return []
+  }
+}
+qsort([42, 34, 100, 1, 3])
+
