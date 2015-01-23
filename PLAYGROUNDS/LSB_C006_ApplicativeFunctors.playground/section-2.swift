@@ -1,47 +1,71 @@
 import UIKit
 
 /*
-//  Decomposing Arrays
+//  Applicative Functors
+//  a.k.a. Optionals
 //
 //  Suggested Reading:
-//  http://www.objc.io/snippets/1.html
+//  http://www.objc.io/snippets/7.html
 /===================================*/
 
 
 
 /*------------------------------------/
-//  Head : Tail
+//  Login again
 /------------------------------------*/
-extension Array {
-  var decompose: (head: T, tail: [T])? {
-    return (count > 0) ? (self[0], Array(self[1..<count])) : nil
-  }
+func login(email: String, pw: String, success: Bool -> String) -> String {
+  return success(email == "email" && pw == "pass")
 }
 
-func sum(xs: [Int]) -> Int {
-  if let (head, tail) = xs.decompose {
-    return head + sum(tail)
+func getEmail() -> String? {
+  return "email"
+}
+
+func getPw() -> String? {
+  return "pass"
+}
+
+
+// This is what you have to do to protect against nils
+var returnVal = ""
+if let email = getEmail() {
+  if let pw = getPw() {
+    returnVal = login(email, pw) { "success: \($0)" }
   } else {
-    return 0
+    // error...
   }
+} else {
+  // error...
+}
+returnVal
+
+
+/*---------------------------------------/
+//  Optionals are Applicative Functors
+/---------------------------------------*/
+infix operator <*> { associativity left precedence 150 }
+func <*><A, B>(lhs: (A -> B)?, rhs: A?) -> B? {
+  if let lhs1 = lhs {
+    if let rhs1 = rhs {
+      return lhs1(rhs1)
+    }
+  }
+  return nil
 }
 
-sum([5])
-sum([1, 2, 3])
-sum([])
-
-
-/*------------------------------------/
-//  Quicksort
-/------------------------------------*/
-func qsort (var input: [Int]) -> [Int] {
-  if let (pivot, rest) = input.decompose {
-    let lesser = rest.filter { $0 < pivot }
-    let greater = rest.filter { $0 > pivot }
-    return qsort(lesser) + [pivot] + qsort(greater)
-  } else {
-    return []
-  }
+func curry<A, B, C, R>(f: (A, B, C) -> R) -> A -> B -> C -> R {
+  return { a in { b in { c in f(a, b, c) } } }
 }
-qsort([42, 34, 100, 1, 3])
+
+
+// Use the new <*> operator
+returnVal = ""
+if let f = curry(login) <*> getEmail() <*> getPw() {
+  returnVal = f { "success \($0)" }
+} else {
+  // error...
+}
+returnVal
+
+
 

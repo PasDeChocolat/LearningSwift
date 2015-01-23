@@ -22,6 +22,9 @@
       <FileRef
          location = "group:LSB_C005_Currying.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_C006_ApplicativeFunctors.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
