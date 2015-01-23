@@ -68,4 +68,3 @@ if let f = curry(login) <*> getEmail() <*> getPw() {
 returnVal
 
 
-

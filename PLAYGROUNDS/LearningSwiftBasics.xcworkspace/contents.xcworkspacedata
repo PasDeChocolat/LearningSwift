@@ -25,6 +25,9 @@
       <FileRef
          location = "group:LSB_C006_ApplicativeFunctors.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_C007_Map.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
