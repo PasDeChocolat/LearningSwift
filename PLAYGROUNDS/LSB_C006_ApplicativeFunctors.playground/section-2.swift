@@ -61,7 +61,7 @@ func curry<A, B, C, R>(f: (A, B, C) -> R) -> A -> B -> C -> R {
 // Use the new <*> operator
 returnVal = ""
 if let f = curry(login) <*> getEmail() <*> getPw() {
-  returnVal = f { "success \($0)" }
+  returnVal = f { "success: \($0)" }
 } else {
   // error...
 }
