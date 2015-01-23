@@ -19,6 +19,9 @@
       <FileRef
          location = "group:LSB_C004_Reduce.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_C005_Currying.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
