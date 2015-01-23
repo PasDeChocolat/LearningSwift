@@ -30,8 +30,28 @@ ints // still immutable
 //  Map on an Optional
 /------------------------------------*/
 var optName: String?
-optName = "Fred"
+var greeting: String? = ""
 
-var greeting = ""
-//greeting = map(optName) { "Hello, \($0)" }
-//greeting
+optName = "George"
+if let name = optName {
+  greeting = "Hi, \(name)"
+}
+greeting!
+
+
+// Can detect a nil with a much nicer syntax
+optName = "Fred"
+greeting = optName.map { "Hello, \($0)" }
+greeting!
+
+
+// And return nil if map unsuccessful
+optName = nil
+greeting = map(optName) { "Hello, \($0)" }
+if greeting == nil {
+  "greeting is nil"
+}
+
+
+
+
