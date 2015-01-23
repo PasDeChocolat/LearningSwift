@@ -1,62 +1,62 @@
 import UIKit
 
 /*
-//  Flat Map Operator
+//  Function Compostions
 //
 //  Suggested Reading:
-//  http://www.objc.io/snippets/4.html
+//  http://www.objc.io/snippets/2.html
 /===================================*/
 
 
+
 /*------------------------------------/
-//  Deck of cards
+//  Contrived random string example
 /------------------------------------*/
-let ranks = ["A", "K", "Q", "J", "10",
-  "9", "8", "7", "6", "5",
-  "4", "3", "2"]
-let suits = ["♠", "♥", "♦", "♣"]
+let max = 5
 
-
-// All the cards!
-typealias Card = (String, String)
-var allCards1 = [Card]()
-for rank in ranks {
-  for suit in suits {
-    allCards1.append((rank, suit))
-  }
-}
-allCards1
-allCards1.count
-
-// But nested for loops are nasty.
-func cardsForSuit(suit: String, ranks: [String]) -> [Card] {
-  return ranks.map { ($0, suit) }
+func rand() -> Int {
+  return Int(arc4random_uniform(UInt32(max))) + 1
 }
 
-let cardsBySuit = suits.map { cardsForSuit($0, ranks) }
-cardsBySuit
-cardsBySuit.count
-cardsBySuit[0]
-cardsBySuit[1]
-let allCards2 = cardsBySuit.reduce([], combine: +)
-allCards2.count
+func randomize(xs: [Int]) -> [Int] {
+  return xs.map { _ in rand() }
+}
+
+func letterize(xs: [Int]) -> [[Character]] {
+  return xs.map { [Character](count: $0, repeatedValue: "i") }
+}
+
+func stringize(xs: [[Character]]) -> [String] {
+  return xs.map { String($0) }
+}
+
+
+let starter = [Int](count: 10, repeatedValue: 1)
+stringize(letterize(randomize(starter)))
+
 
 
 /*------------------------------------/
-//  Flat Map
+//  Composition operator
 /------------------------------------*/
-infix operator >>= {}
-func >>=<A, B>(xs: [A], f: A -> [B]) -> [B] {
-  return xs.map(f).reduce([], combine: +)
+infix operator >>> { associativity left }
+func >>> <A, B, C>(f: B -> C, g: A -> B) -> A -> C {
+  return { x in f(g(x)) }
 }
 
+let codify = stringize >>> letterize >>> randomize
+codify(starter)
 
-// But nested for loops are nasty.
-let allCards3 = ranks >>= { rank in
-  suits >>= { suit in [(rank, suit)] }
+
+// and also...
+func randInt(n: Int) -> Int {
+  let UInt32ToInt = { (x: UInt32) -> Int in Int(x) }
+  let randomUInt32 = { (x: UInt32) -> UInt32 in arc4random_uniform(x) }
+  let IntToUInt32 = { (x: Int) -> UInt32 in UInt32(x) }
+  let f = UInt32ToInt >>> randomUInt32 >>> IntToUInt32
+  return f(n) + 1
 }
-allCards3
-allCards3.count
+randInt(10)
 
 
 

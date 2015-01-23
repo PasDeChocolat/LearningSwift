@@ -5,6 +5,7 @@ import UIKit
 //
 //  Suggested Reading:
 //  http://www.objc.io/snippets/1.html
+//  http://www.objc.io/snippets/10.html
 /===================================*/
 
 
@@ -44,4 +45,42 @@ func qsort (var input: [Int]) -> [Int] {
   }
 }
 qsort([42, 34, 100, 1, 3])
+
+
+/*------------------------------------/
+//  Permutations
+/------------------------------------*/
+func between<T>(x: T, ys: [T]) -> [[T]] {
+  if let (head, tail) = ys.decompose {
+    return [[x] + ys] + between(x, tail).map { [head] + $0 }
+  } else {
+    return [[x]]
+  }
+}
+
+// All possible ways to insert an element into an array
+let betweenResult = between(0, [1, 2, 3])
+betweenResult
+
+
+// Need the flat map operator
+infix operator >>= {}
+func >>=<A, B>(xs: [A], f: A -> [B]) -> [B] {
+  return xs.map(f).reduce([], combine: +)
+}
+
+
+// Now create permutations
+func permutations<T>(xs: [T]) -> [[T]] {
+  if let (head, tail) = xs.decompose {
+    return permutations(tail) >>= { permTail in
+      between(head, permTail)
+    }
+  } else {
+    return [[]]
+  }
+}
+
+let permutationResult = permutations([1, 2, 3])
+
 
