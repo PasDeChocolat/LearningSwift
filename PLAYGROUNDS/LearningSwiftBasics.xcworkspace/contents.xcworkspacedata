@@ -13,6 +13,9 @@
       <FileRef
          location = "group:LSB_C002_FunctionComposition.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_C003_FlatMapOperator.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
