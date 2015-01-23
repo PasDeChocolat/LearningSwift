@@ -28,6 +28,9 @@
       <FileRef
          location = "group:LSB_C007_Map.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_C008_ParsingJSON.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
