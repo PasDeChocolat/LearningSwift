@@ -16,6 +16,9 @@
       <FileRef
          location = "group:LSB_C003_FlatMapOperator.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_C004_Reduce.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
