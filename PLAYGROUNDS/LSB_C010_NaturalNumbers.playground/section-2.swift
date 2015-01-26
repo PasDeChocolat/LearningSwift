@@ -257,6 +257,23 @@ max(two, one) == two
 max(three, one) == three
 
 
+/*------------------------------------/
+//  Distance
+/------------------------------------*/
+func distance (a: Nat, b: Nat) -> Nat {
+  if a >= b {
+    return a - b
+  } else {
+    return b - a
+  }
+}
+
+
+// Distance examples:
+distance(three, one) == two
+distance(one, four) == three
+distance(one, one) == zero
+
 
 
 
