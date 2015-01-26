@@ -5,6 +5,7 @@ import UIKit
 //
 //  Suggested Reading:
 //  http://www.fewbutripe.com/swift/math/2015/01/20/natural-numbers.html
+//  http://nshipster.com/swift-comparison-protocols/
 /===================================*/
 
 
@@ -223,6 +224,37 @@ four / four == one
 four / two == two
 one / four == zero
 
+
+/*------------------------------------/
+//  Min
+/------------------------------------*/
+func min (a: Nat, b: Nat) -> Nat {
+  return a <= b ? a : b
+}
+
+
+// Min examples:
+min(zero, one) == zero
+min(one, zero) == zero
+min(one, two) == one
+min(two, one) == one
+min(three, one) == one
+
+
+/*------------------------------------/
+//  Max
+/------------------------------------*/
+func max (a: Nat, b: Nat) -> Nat {
+  return a >= b ? a : b
+}
+
+
+// Max examples
+max(zero, one) == one
+max(one, zero) == one
+max(one, two) == two
+max(two, one) == two
+max(three, one) == three
 
 
 
