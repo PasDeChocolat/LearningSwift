@@ -296,3 +296,24 @@ zero % four == zero
 four % two == zero
 five % two == one
 
+
+/*------------------------------------/
+//  Predecessor
+/------------------------------------*/
+func pred (n: Nat) -> Nat? {
+  switch n {
+  case .Zero:
+    return nil
+  case let .Succ(pred_n):
+    return pred_n() as Nat?
+  }
+}
+
+let predOne = pred(one)
+predOne!
+//predOne == zero  // <-- Huh?
+predOne! == zero
+pred(two)! == one
+pred(five)! == four
+pred(zero) == nil
+
