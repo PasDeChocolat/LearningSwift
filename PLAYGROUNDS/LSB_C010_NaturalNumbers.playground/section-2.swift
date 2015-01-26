@@ -317,3 +317,44 @@ pred(two)! == one
 pred(five)! == four
 pred(zero) == nil
 
+
+/*------------------------------------/
+//  IntegerLiteralConvertible
+/------------------------------------*/
+extension Nat: IntegerLiteralConvertible {
+  typealias IntegerLiteralType = Int
+  
+  init(integerLiteral value: IntegerLiteralType) {
+    if value < 0 {
+      assertionFailure("Must be >= 0")
+    } else if value == 0 {
+      self = .Zero
+    } else {
+      var ar = [Nat](count: value, repeatedValue: Nat.Zero)
+      self = ar.reduce(Nat.Zero, combine: { sum, _ in
+        return Nat.Succ(sum)
+      })
+    }
+  }
+}
+
+
+// Can use the verbose initializer with an Int
+Nat(integerLiteral: 1) == one
+Nat(integerLiteral: 0) == zero
+Nat(integerLiteral: 2) == two
+
+
+// Can convert from Int directly, as long as types match
+let litZero: Nat = 0
+litZero == zero
+litZero == 0
+
+one == 1 as Nat
+two == 2 as Nat
+
+let litThree: Nat = 3
+litThree == three
+litThree == 3
+
+
