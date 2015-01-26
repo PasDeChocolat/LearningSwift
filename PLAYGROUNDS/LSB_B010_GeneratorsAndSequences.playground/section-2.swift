@@ -92,6 +92,7 @@ Array(1...5).reduce([]) { acc, x in
 class MemoizedFibonnaciGenerator: Fibonacci {
   typealias FibonacciType = Int
   
+  // TODO: Could probably use a tuple here...
   var lastLastFib: FibonacciType?
   var lastFib: FibonacciType?
   var currentIndex: Int
