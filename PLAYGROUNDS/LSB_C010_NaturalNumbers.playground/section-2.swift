@@ -275,6 +275,24 @@ distance(one, four) == three
 distance(one, one) == zero
 
 
+/*------------------------------------/
+//  Modulus
+/------------------------------------*/
+func % (a: Nat, b: Nat) -> Nat {
+  if b == zero {
+    assertionFailure("Divide by zero error!")
+  } else if a < b {
+    return a
+  } else {
+    return (a - b) % b
+  }
+}
 
 
+// Modulus examples:
+three % five == three
+five % three == two
+zero % four == zero
+four % two == zero
+five % two == one
 
