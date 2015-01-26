@@ -6,6 +6,7 @@ import UIKit
 //  Suggested Reading:
 //  http://www.fewbutripe.com/swift/math/2015/01/20/natural-numbers.html
 //  http://nshipster.com/swift-comparison-protocols/
+//  http://nshipster.com/swift-literal-convertible/
 /===================================*/
 
 
