@@ -4,7 +4,7 @@ import Cocoa
 //  Diagrams, a DSL
 //
 //  Suggested Reading:
-//  http://www.objc.io/books/ (Chapter 10)
+//  http://www.objc.io/books/ (Chapter 10, Diagrams)
 //    (Functional Programming in Swift, by Chris Eidhof, Florian Kugler, and Wouter Swierstra)
 /===================================*/
 

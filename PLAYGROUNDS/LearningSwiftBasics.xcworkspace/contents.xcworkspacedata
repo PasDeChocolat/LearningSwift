@@ -68,6 +68,9 @@
       <FileRef
          location = "group:LSB_B009_PatternMatching.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_B010_GeneratorsAndSequences.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"

@@ -4,7 +4,7 @@ import UIKit
 //  Data Structures
 //
 //  Suggested Reading:
-//  http://www.objc.io/books/ (Chapter 9)
+//  http://www.objc.io/books/ (Chapter 9, Purely Functional Data Structures)
 //    (Functional Programming in Swift, by Chris Eidhof, Florian Kugler, and Wouter Swierstra)
 /===================================*/
 
