@@ -34,6 +34,9 @@
       <FileRef
          location = "group:LSB_C009_EnumsOverBooleans.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_C010_NaturalNumbers.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
