@@ -331,10 +331,9 @@ extension Nat: IntegerLiteralConvertible {
     } else if value == 0 {
       self = .Zero
     } else {
-      var ar = [Nat](count: value, repeatedValue: Nat.Zero)
-      self = ar.reduce(Nat.Zero, combine: { sum, _ in
+      self = Array(0..<value).reduce(Nat.Zero) { sum, _ in
         return Nat.Succ(sum)
-      })
+      }
     }
   }
 }
@@ -357,5 +356,8 @@ two == 2 as Nat
 let litThree: Nat = 3
 litThree == three
 litThree == 3
+
+
+
 
 
