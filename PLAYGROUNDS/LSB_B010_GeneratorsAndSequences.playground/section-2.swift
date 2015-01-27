@@ -218,7 +218,115 @@ fibs = Array(1...5).reduce([]) { acc, _ in
 
 
 /*------------------------------------/
+//  Just a few Fibs:
+//  Only produces a few Fibs
+/------------------------------------*/
+class ShortFibGenerator: GeneratorType {
+  typealias Element = Int
+  
+  var memo: (last: Element?, lastLast: Element?)
+  var currentIndex: Int
+  let fibCount = 5
+  var lastIndex: Int
+  
+  let g: MemoizedFibonnaciGenerator
+  
+  init(startIndex: Int) {
+    currentIndex = startIndex
+    lastIndex = startIndex + fibCount - 1
+    g = MemoizedFibonnaciGenerator(startIndex: startIndex)
+  }
+  
+  func next() -> Element? {
+    if currentIndex < 0 || currentIndex > lastIndex { return nil }
+    currentIndex++
+    return g.next()
+  }
+}
+
+let fewFibs = ShortFibGenerator(startIndex: 0)
+fibs = Array(1...20).reduce([]) { acc, _ in
+  if let nextFib = fewFibs.next() {
+    return acc + [nextFib]
+  }
+  return acc
+}
+fibs // Only contains 5 fibs, even though we tried to generate 20
+
+
+/*------------------------------------/
 //  Sequences
 /------------------------------------*/
+struct ShortFibSequence: SequenceType {
+  let startIndex: Int
+  init(startIndex: Int) {
+    self.startIndex = startIndex
+  }
+  
+  typealias Generator = ShortFibGenerator
+  func generate() -> Generator {
+    return Generator(startIndex: startIndex)
+  }
+  
+}
+
+
+// Creates generators, as expected
+var shortFibSeq = ShortFibSequence(startIndex: 0)
+var shortFibs = shortFibSeq.generate()
+fibs = Array(1...20).reduce([]) { acc, _ in
+  if let nextFib = shortFibs.next() {
+    return acc + [nextFib]
+  }
+  return acc
+}
+fibs // Only contains 5 fibs, even though we tried to generate 20
+
+
+// Can regenerate again
+shortFibs = shortFibSeq.generate()
+fibs = Array(1...20).reduce([]) { acc, _ in
+  if let nextFib = shortFibs.next() {
+    return acc + [nextFib]
+  }
+  return acc
+}
+fibs
+
+
+/*------------------------------------/
+//  Sequences and For
+/------------------------------------*/
+var fibsBanner = ""
+for x in ShortFibSequence(startIndex: 5) {
+  if fibsBanner != "" { fibsBanner += "-" }
+  fibsBanner += String(x)
+}
+fibsBanner
+
+
+/*------------------------------------/
+//  Sequences and Map
+/------------------------------------*/
+var doubleSeq = map(ShortFibSequence(startIndex: 5)) { $0 * 2 }
+fibsBanner = ""
+for x in doubleSeq {
+  if fibsBanner != "" { fibsBanner += "-" }
+  fibsBanner += String(x)
+}
+fibsBanner
+
+
+/*------------------------------------/
+//  Sequences and Filter
+/------------------------------------*/
+var oddFibs = filter(ShortFibSequence(startIndex: 5)) { $0 % 2 == 1 }
+fibsBanner = ""
+for x in oddFibs {
+  if fibsBanner != "" { fibsBanner += "-" }
+  fibsBanner += String(x)
+}
+fibsBanner
+
 
 
