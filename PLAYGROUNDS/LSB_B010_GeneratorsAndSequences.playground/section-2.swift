@@ -92,9 +92,7 @@ Array(1...5).reduce([]) { acc, x in
 class MemoizedFibonnaciGenerator: Fibonacci {
   typealias FibonacciType = Int
   
-  // TODO: Could probably use a tuple here...
-  var lastLastFib: FibonacciType?
-  var lastFib: FibonacciType?
+  var memo: (last: FibonacciType?, lastLast: FibonacciType?)
   var currentIndex: Int
   
   init(startIndex: Int) {
@@ -104,12 +102,12 @@ class MemoizedFibonnaciGenerator: Fibonacci {
   
   func next() -> FibonacciType {
     let calcFib = {
-      (self.lastFib ?? fib(self.currentIndex-1)) + (self.lastLastFib ?? fib(self.currentIndex-2))
+      (self.memo.last ?? fib(self.currentIndex-1)) + (self.memo.lastLast ?? fib(self.currentIndex-2))
     }
     let nextFib = currentIndex < 2 ? 1 : calcFib()
     
-    lastLastFib = lastFib
-    lastFib = nextFib
+    memo.lastLast = memo.last
+    memo.last = nextFib
     currentIndex++
     return nextFib
   }
@@ -127,7 +125,7 @@ fibs
 
 // Do this again, using `reduce`
 memoFibGenerator = MemoizedFibonnaciGenerator(startIndex: 3)
-fibs = Array(1...5).reduce([]) { acc, x in
+fibs = Array(1...5).reduce([]) { acc, _ in
   acc + [memoFibGenerator.next()]
 }
 
