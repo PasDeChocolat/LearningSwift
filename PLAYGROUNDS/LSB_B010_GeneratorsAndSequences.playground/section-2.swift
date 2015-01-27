@@ -42,26 +42,18 @@ fib(7) // = 8 + 13
 /*------------------------------------/
 //  Generators
 /------------------------------------*/
-// Generator Type:
-protocol Fibonacci {
-  typealias FibonacciType
-  func next() -> FibonacciType
-}
-
 // Fibonnaci Generator:
-class FibonnaciGenerator: Fibonacci {
-  typealias FibonacciType = Int
+class FibonnaciGenerator: GeneratorType {
+  typealias Element = Int
   
   var currentIndex: Int
   
   init(startIndex: Int) {
-    if startIndex < 0 {
-      assertionFailure("Fibonacci indexes must be >= 0.")
-    }
     currentIndex = startIndex
   }
   
-  func next() -> FibonacciType {
+  func next() -> Element? {
+    if currentIndex < 0 { return nil }
     return fib(currentIndex++)
   }
 }
@@ -71,15 +63,20 @@ class FibonnaciGenerator: Fibonacci {
 var fibGenerator = FibonnaciGenerator(startIndex: 0)
 var fibs = [Int]()
 for var i=0; i<5; i++ {
-  fibs.append(fibGenerator.next())
+  if let nextFib = fibGenerator.next() {
+    fibs.append(nextFib)
+  }
 }
 fibs
 
 
 // Do this again, using `reduce`
 fibGenerator = FibonnaciGenerator(startIndex: 0)
-Array(1...5).reduce([]) { acc, _ in
-  acc + [fibGenerator.next()]
+Array(1...5).reduce([Int]()) { acc, _ in
+  if let nextFib = fibGenerator.next() {
+    return acc + [nextFib]
+  }
+  return acc
 }
 
 
@@ -89,25 +86,25 @@ Array(1...5).reduce([]) { acc, _ in
 // The older generator will slow down as n gets larger.
 
 // Faster Fibonnaci Generator:
-class MemoizedFibonnaciGenerator: Fibonacci {
-  typealias FibonacciType = Int
+class MemoizedFibonnaciGenerator: GeneratorType {
+  typealias Element = Int
   
-  var memo: (last: FibonacciType?, lastLast: FibonacciType?)
+  var memo: (last: Element?, lastLast: Element?)
   var currentIndex: Int
   
   init(startIndex: Int) {
-    if startIndex < 0 { assertionFailure("Fibonacci indexes must be >= 0.") }
     currentIndex = startIndex
   }
   
-  func next() -> FibonacciType {
+  func next() -> Element? {
+    if currentIndex < 0 { return nil }
+    
     let calcFib = {
       (self.memo.last ?? fib(self.currentIndex-1)) + (self.memo.lastLast ?? fib(self.currentIndex-2))
     }
     let nextFib = currentIndex < 2 ? 1 : calcFib()
     
-    memo.lastLast = memo.last
-    memo.last = nextFib
+    memo = (last: nextFib, lastLast: memo.last)
     currentIndex++
     return nextFib
   }
@@ -118,7 +115,9 @@ class MemoizedFibonnaciGenerator: Fibonacci {
 var memoFibGenerator = MemoizedFibonnaciGenerator(startIndex: 0)
 fibs = [Int]()
 for var i=0; i<5; i++ {
-  fibs.append(memoFibGenerator.next())
+  if let nextFib = memoFibGenerator.next() {
+    fibs.append(nextFib)
+  }
 }
 fibs
 
@@ -126,23 +125,26 @@ fibs
 // Do this again, using `reduce`
 memoFibGenerator = MemoizedFibonnaciGenerator(startIndex: 3)
 fibs = Array(1...5).reduce([]) { acc, _ in
-  acc + [memoFibGenerator.next()]
+  if let nextFib = memoFibGenerator.next() {
+    return acc + [nextFib]
+  }
+  return acc
 }
 
 
 /*------------------------------------/
 //  Find a Fib
 /------------------------------------*/
-func findFib(predicate: Int -> Bool) -> Int {
+func findFib(predicate: Int -> Bool) -> Int? {
   let g = MemoizedFibonnaciGenerator(startIndex: 0)
-  while true {
-    let x = g.next()
+  while let x = g.next() {
     if predicate(x) { return x }
   }
+  return nil
 }
 
 let bigFib = findFib { $0 > 20 }
-bigFib
+bigFib!
 
 
 /*------------------------------------/
