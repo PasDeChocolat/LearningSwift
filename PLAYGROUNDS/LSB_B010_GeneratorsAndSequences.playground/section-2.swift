@@ -78,7 +78,7 @@ fibs
 
 // Do this again, using `reduce`
 fibGenerator = FibonnaciGenerator(startIndex: 0)
-Array(1...5).reduce([]) { acc, x in
+Array(1...5).reduce([]) { acc, _ in
   acc + [fibGenerator.next()]
 }
 
