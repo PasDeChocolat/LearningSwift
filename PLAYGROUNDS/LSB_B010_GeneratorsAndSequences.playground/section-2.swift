@@ -130,8 +130,19 @@ fibs = Array(1...5).reduce([]) { acc, _ in
 }
 
 
+/*------------------------------------/
+//  Find a Fib
+/------------------------------------*/
+func findFib(predicate: Int -> Bool) -> Int {
+  let g = MemoizedFibonnaciGenerator(startIndex: 0)
+  while true {
+    let x = g.next()
+    if predicate(x) { return x }
+  }
+}
 
-
+let bigFib = findFib { $0 > 20 }
+bigFib
 
 
 /*------------------------------------/
