@@ -148,6 +148,76 @@ bigFib!
 
 
 /*------------------------------------/
+//  Generic Find
+/------------------------------------*/
+func find<G: GeneratorType>(var generator: G, predicate: G.Element -> Bool) -> G.Element? {
+  while let x = generator.next() {
+    if predicate(x) { return x }
+  }
+  return nil
+}
+
+let myFibs = MemoizedFibonnaciGenerator(startIndex: 0)
+let multThreeFib = find(myFibs) { $0 % 3 == 0 && $0 > 3 }
+multThreeFib!
+
+
+/*------------------------------------/
+//  GeneratorOf<T>
+/------------------------------------*/
+func easyFib(startIndex: Int) -> GeneratorOf<Int> {
+  var i = startIndex
+  return GeneratorOf {
+    if i < 0 { return nil}
+    
+    let nextN = i; i++
+    switch nextN {
+    case 0, 1:
+      return 1
+    default:
+      return fib(nextN)
+    }
+  }
+}
+
+var easyFibs = easyFib(0) // Note: this must be a var.
+fibs = Array(1...5).reduce([]) { acc, _ in
+  if let nextFib = easyFibs.next() {
+    return acc + [nextFib]
+  }
+  return acc
+}
+
+
+/*------------------------------------/
+//  Memoized Fib GeneratorOf<T>
+/------------------------------------*/
+func easyMemoFib(startIndex: Int) -> GeneratorOf<Int> {
+  var i = startIndex
+  var memo: (last: Int?, lastLast: Int?)
+  
+  return GeneratorOf {
+    if i < 0 { return nil }
+    
+    let calcFib = { (memo.last ?? fib(i-1)) + (memo.lastLast ?? fib(i-2)) }
+    let nextFib = i < 2 ? 1 : calcFib()
+    
+    memo = (last: nextFib, lastLast: memo.last)
+    i++
+    return nextFib
+  }
+}
+
+var easyMemoFibs = easyFib(0) // Note: this must be a var.
+fibs = Array(1...5).reduce([]) { acc, _ in
+  if let nextFib = easyMemoFibs.next() {
+    return acc + [nextFib]
+  }
+  return acc
+}
+
+
+/*------------------------------------/
 //  Sequences
 /------------------------------------*/
 
