@@ -6,7 +6,14 @@
    </FileRef>
    <Group
       location = "container:"
-      name = "C-Level Playgrounds">
+      name = "D-Level Topic Playgrounds">
+      <FileRef
+         location = "group:LSB_D001_TypedNotificationObservers.playground">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "C-Level More Functional Playgrounds">
       <FileRef
          location = "group:LSB_C001_DecomposingArrays.playground">
       </FileRef>
@@ -40,7 +47,7 @@
    </Group>
    <Group
       location = "container:"
-      name = "B-Level Playgrounds">
+      name = "B-Level Functional Playgrounds">
       <FileRef
          location = "group:LSB_B001_HigherOrderFunctions.playground">
       </FileRef>
@@ -74,7 +81,7 @@
    </Group>
    <Group
       location = "container:"
-      name = "A-Level Playgrounds">
+      name = "A-Level Basic Reference Playgrounds">
       <FileRef
          location = "group:LSB_002_VariablesAndConstants.playground">
       </FileRef>
