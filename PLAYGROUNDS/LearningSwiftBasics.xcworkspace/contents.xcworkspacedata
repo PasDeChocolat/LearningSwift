@@ -10,6 +10,9 @@
       <FileRef
          location = "group:LSB_D001_TypedNotificationObservers.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_D002_TypeInference.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
