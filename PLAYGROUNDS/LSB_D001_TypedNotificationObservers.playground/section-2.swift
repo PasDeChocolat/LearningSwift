@@ -64,7 +64,7 @@ let panicObserver = NotificationObserver(notification: globalPanicNotification) 
 }
 
 // Uncomment this line and check the console for log messages
-postNotification(globalPanicNotification, myError)
+//postNotification(globalPanicNotification, myError)
 //postNotification(globalPanicNotification, myError)
 
 
