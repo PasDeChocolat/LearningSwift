@@ -13,6 +13,9 @@
       <FileRef
          location = "group:LSB_D002_TypeInference.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_D003_NamedParameters.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"

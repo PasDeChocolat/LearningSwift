@@ -1,70 +1,35 @@
 import UIKit
 
 /*
-//  Typed Notification Observers
+//  Type Inference
 //
 //  Based on:
-//  http://www.objc.io/snippets/16.html
-//  https://gist.github.com/chriseidhof/9bf7280063db3a249fbe
+//  https://skillsmatter.com/skillscasts/6142-swift-beauty-by-default
 /===================================*/
 
 
 
 /*------------------------------------/
-//  Posting a Notification
+//  Type Inference
 /------------------------------------*/
-class Box<T> {
-  let unbox: T
-  init(_ value: T) { self.unbox = value }
+var nums1: [Int] = [1, 42, 32, 4, 5]
+var nums2 = [1, 42, 32, 4, 5]
+
+
+nums1.sort { (a: Int, b: Int) -> Bool in
+  return a < b
 }
+nums1
 
-struct Notification<A> {
-  let name: String
-}
+nums1.sort { a, b in a < b }
+nums1
 
-func postNotification<A>(note: Notification<A>, value: A) {
-  let userInfo = ["value": Box(value)]
-  NSNotificationCenter.defaultCenter().postNotificationName(note.name, object: nil, userInfo: userInfo)
-}
+nums1.sort { $0 < $1 }
+nums1
 
-
-/*------------------------------------/
-//  Observing Notifications
-/------------------------------------*/
-class NotificationObserver {
-  let observer: NSObjectProtocol
-  
-  init<A>(notification: Notification<A>, block aBlock: A -> ()) {
-    observer = NSNotificationCenter.defaultCenter().addObserverForName(notification.name, object: nil, queue: nil) { note in
-      if let value = (note.userInfo?["value"] as? Box<A>)?.unbox {
-        aBlock(value)
-      } else {
-        assert(false, "Couldn't understand user info")
-      }
-    }
-  }
-  
-  deinit {
-    NSNotificationCenter.defaultCenter().removeObserver(observer)
-  }
-  
-}
+nums1.sort(<)
+nums1
 
 
-/*------------------------------------/
-//  See it in action
-/------------------------------------*/
-let globalPanicNotification: Notification<NSError> = Notification(name: "Global panic")
-
-
-let myError: NSError = NSError(domain: "com.learningswiftbasics.d001", code: 42, userInfo: [:])
-
-let panicObserver = NotificationObserver(notification: globalPanicNotification) { err in
-  println("Error Description: \(err.localizedDescription)")
-}
-
-// Uncomment this line and check the console for log messages
-//postNotification(globalPanicNotification, myError)
-//postNotification(globalPanicNotification, myError)
 
 
