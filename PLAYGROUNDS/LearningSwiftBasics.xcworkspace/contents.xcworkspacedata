@@ -16,6 +16,9 @@
       <FileRef
          location = "group:LSB_D003_NamedParameters.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_D004_RPNCalculation.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
