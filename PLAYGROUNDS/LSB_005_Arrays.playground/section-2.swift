@@ -94,15 +94,18 @@ myMutableArray
 var smallArray = [0, 1, 2]
 smallArray[0]
 
+
 // by range
 smallArray[1...2]
 smallArray[0..<2]
+
 
 // by name
 smallArray.first
 smallArray.first!
 smallArray.last
 smallArray.last!
+
 
 // don't go beyond the last index
 //smallArray[1000] // causes an exception
@@ -112,8 +115,10 @@ smallArray.last!
 // capacity
 smallArray.capacity
 
+
 // count
 smallArray.count
+
 
 // isEmpty
 smallArray.isEmpty
@@ -125,43 +130,53 @@ emptyArray.isEmpty
 // append
 smallArray.append(3)
 
+
 // +=
 let constantArray = [101, 102]
 //constantArray[0] = 100
 smallArray += constantArray
 
+
 // assignment by index
 smallArray[0] = 5
 smallArray
+
 
 // range
 smallArray[0...1] = [42, 42, 42, 42]
 smallArray
 
+
 // insert
 smallArray.insert(2, atIndex: 1)
+
 
 // removeAll
 smallArray.capacity
 smallArray.removeAll(keepCapacity: true)
 smallArray.capacity
 
+
 smallArray.removeAll(keepCapacity: false)
 smallArray.capacity
+
 
 // remove at index
 smallArray = [1, 2, 3, 4, 5]
 smallArray.removeAtIndex(2)
 smallArray
 
+
 // removeLast
 smallArray.removeLast()
 smallArray
+
 
 // reserveCapacity
 smallArray.capacity
 smallArray.reserveCapacity(20)
 smallArray.capacity
+
 
 // sort
 var letters = ["z", "e", "b", "r", "a"]
@@ -199,10 +214,12 @@ var longAnimals = animals.filter { countElements($0) > 3 }
 longAnimals
 animals
 
+
 // map
 var bigAnimals = animals.map { countElements($0) > 3 ? "big " + $0 : $0 }
 bigAnimals
 animals
+
 
 // reduce
 var someNumbers = [1, 3, 43, 35, 25, 23]
@@ -213,11 +230,14 @@ sum
 var sum2 = someNumbers.reduce(100) { $0 + $1 }
 sum2
 
+
 // reverse
 animals.reverse()
+
 
 // sorted
 var sortedAnimals = animals.sorted { $0 < $1 }
 sortedAnimals
+
 
 

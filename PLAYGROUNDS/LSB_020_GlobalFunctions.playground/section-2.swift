@@ -302,3 +302,61 @@ toString(r)
 // should appear like this:
 r.description
 
+
+/*---------------------------------/
+// dropFirst
+// on a Sliceable
+/---------------------------------*/
+dropFirst(animals)
+
+
+/*---------------------------------/
+// dropLast
+// on a Sliceable
+/---------------------------------*/
+dropLast(animals)
+
+
+/*---------------------------------/
+// first (optional)
+// on a Collection
+/---------------------------------*/
+first(animals)!
+
+
+/*---------------------------------/
+// last (optional)
+// on a Collection
+/---------------------------------*/
+last(animals)!
+
+
+/*---------------------------------/
+// prefix
+// on a Sliceable
+/---------------------------------*/
+prefix(animals, 2)
+
+
+/*---------------------------------/
+// suffix
+// on a Sliceable
+/---------------------------------*/
+suffix(animals, 2)
+
+
+/*---------------------------------/
+// reversed
+// on a Collection
+/---------------------------------*/
+let reversedAnimals = reverse(animals)
+reversedAnimals
+animals
+
+
+/*---------------------------------/
+// Backwards String
+// Combine String -> [Char] . reverse -> String
+/---------------------------------*/
+let helloThere = "hello there"
+String(reverse(helloThere))
