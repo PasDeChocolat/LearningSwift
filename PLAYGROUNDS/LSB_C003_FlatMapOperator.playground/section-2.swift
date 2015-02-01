@@ -45,7 +45,7 @@ allCards2.count
 /*------------------------------------/
 //  Flat Map
 /------------------------------------*/
-infix operator >>= {}
+infix operator >>= { associativity left }
 func >>=<A, B>(xs: [A], f: A -> [B]) -> [B] {
   return xs.map(f).reduce([], combine: +)
 }
@@ -57,6 +57,8 @@ let allCards3 = ranks >>= { rank in
 }
 allCards3
 allCards3.count
+
+
 
 
 

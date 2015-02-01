@@ -22,6 +22,7 @@ let mapped = optional.map { x in x + 1 }
 optional!
 mapped!
 
+
 // If "nil" then `map` returns nil
 let optNil: Int? = nil
 let mappedNil = optNil.map { x in x + 1 }
@@ -78,14 +79,19 @@ popOfCapitolOfCountry("USA")
 popOfCapitolOfCountry("Canada")
 
 
-// Try this operator from Functional Programming in Swift
-infix operator >>= {}
+//// Try this operator from Functional Programming in Swift
+//infix operator >>= {}
+//func >>=<U, T>(optional: T?, f: T -> U?) -> U? {
+//  if let x = optional {
+//    return f(x)
+//  } else {
+//    return nil
+//  }
+//}
+
+infix operator >>= { associativity left}
 func >>=<U, T>(optional: T?, f: T -> U?) -> U? {
-  if let x = optional {
-    return f(x)
-  } else {
-    return nil
-  }
+  return optional.map { f($0)! }
 }
 
 func popOfCapitolOfCountry2(country: String) -> Int? {
@@ -102,7 +108,13 @@ popOfCapitolOfCountry2("USA")
 popOfCapitolOfCountry2("Canada")
 
 
+func popOfCapitolOfCountry3(country: String) -> Int? {
+  return capitals[country] >>= { cities[$0] } >>= { $0 * 1000 }
+}
 
+popOfCapitolOfCountry3("France")
+popOfCapitolOfCountry3("USA")
+popOfCapitolOfCountry3("Canada")
 
 
 
