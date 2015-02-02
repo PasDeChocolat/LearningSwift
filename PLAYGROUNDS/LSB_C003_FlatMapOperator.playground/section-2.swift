@@ -38,6 +38,7 @@ cardsBySuit
 cardsBySuit.count
 cardsBySuit[0]
 cardsBySuit[1]
+
 let allCards2 = cardsBySuit.reduce([], combine: +)
 allCards2.count
 
