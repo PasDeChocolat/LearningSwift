@@ -1,35 +1,71 @@
 import UIKit
 
 /*
-//  Type Inference
+//  Typed Notification Observers
 //
 //  Based on:
-//  https://skillsmatter.com/skillscasts/6142-swift-beauty-by-default
+//  http://www.objc.io/snippets/16.html
 /===================================*/
 
 
+/*------------------------------------/
+//  Box: A hack for self-reference
+//
+//  Suggested Reading:
+//  http://www.quora.com/How-can-enumerations-in-Swift-be-recursive
+/------------------------------------*/
+class Box<T> {
+  let unbox: T
+  init(_ value: T) { self.unbox = value }
+}
+
 
 /*------------------------------------/
-//  Type Inference
+//  Notifications
 /------------------------------------*/
-var nums1: [Int] = [1, 42, 32, 4, 5]
-var nums2 = [1, 42, 32, 4, 5]
-
-
-nums1.sort { (a: Int, b: Int) -> Bool in
-  return a < b
+struct Notification<A> {
+  let name: String
 }
-nums1
 
-nums1.sort { a, b in a < b }
-nums1
+func postNotification<A>(note: Notification<A>, value: A) {
+  let userInfo = ["value": Box(value)]
+  NSNotificationCenter.defaultCenter().postNotificationName(note.name, object: nil, userInfo: userInfo)
+}
 
-nums1.sort { $0 < $1 }
-nums1
+class NotificationObserver {
+  let observer: NSObjectProtocol
+  
+  init<A>(notification: Notification<A>, block aBlock: A -> ()) {
+    observer = NSNotificationCenter.defaultCenter().addObserverForName(notification.name, object: nil, queue: nil) { note in
+      if let value = (note.userInfo?["value"] as? Box<A>)?.unbox {
+        aBlock(value)
+      } else {
+        assert(false, "Bad user info value")
+      }
+    }
+  }
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(observer)
+  }
+  
+}
 
-nums1.sort(<)
-nums1
+let globalPanicNotification: Notification<NSError> = Notification(name: "Super bad error")
 
+
+let myError: NSError = NSError(domain: "com.pasdechocolat.example", code: 42, userInfo: [:])
+
+let panicObserver = NotificationObserver(notification: globalPanicNotification) { err in
+  println(err.localizedDescription)
+}
+
+
+/*------------------------------------/
+//  Run it!
+//  Uncomment this.
+/------------------------------------*/
+//postNotification(globalPanicNotification, myError)
 
 
 
