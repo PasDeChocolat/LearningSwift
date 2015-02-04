@@ -4,7 +4,7 @@ import UIKit
 /*
 //  Drawing Polygons
 //
-//  Suggested Reading:
+//  Based on:
 //  http://sketchytech.blogspot.com/2014/11/swift-stars-in-our-paths-cgpath.html
 /===================================*/
 

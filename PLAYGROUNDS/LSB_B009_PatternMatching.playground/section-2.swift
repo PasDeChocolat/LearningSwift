@@ -9,7 +9,7 @@ import UIKit
 /*---------------------------------------------------------/
 //  Combined Pattern Matching
 //
-//  Suggested Reading:
+//  Based on:
 //  http://www.objc.io/snippets/15.html
 /---------------------------------------------------------*/
 enum Result {

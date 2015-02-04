@@ -10,7 +10,9 @@ advance(0,0) // <-- Command click this function to see the header file for globa
 //  advance (Strideable)
 //  
 //  with: successor and predecessor
+//  See also: Strings
 /------------------------------------*/
+2 + 2
 advance(5, 2)
 5.successor()
 5.predecessor()
@@ -307,6 +309,7 @@ r.description
 // dropFirst
 // on a Sliceable
 /---------------------------------*/
+var animals = ["dog", "cat", "swan", "meerkat"]
 dropFirst(animals)
 
 

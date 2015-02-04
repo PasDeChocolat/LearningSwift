@@ -5,7 +5,7 @@ import FunctionalDiagrams
 /*
 //  Diagrams, a DSL (now in iOS)
 //
-//  Suggested Reading:
+//  Based on:
 //  http://www.objc.io/books/ (Chapter 10, Diagrams)
 //    (Functional Programming in Swift, by Chris Eidhof, Florian Kugler, and Wouter Swierstra)
 /===================================*/

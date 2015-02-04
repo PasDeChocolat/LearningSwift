@@ -87,6 +87,9 @@
       <FileRef
          location = "group:LSB_B010_GeneratorsAndSequences.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_B011_ParserCombinators.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
