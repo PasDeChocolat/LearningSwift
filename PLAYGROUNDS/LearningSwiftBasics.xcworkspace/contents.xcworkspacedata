@@ -149,7 +149,10 @@
          location = "group:LSB_019_RangesIntervalsStrides.playground">
       </FileRef>
       <FileRef
-         location = "group:LSB_020_GlobalFunctions.playground">
+         location = "group:LSB_020_Slices.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_021_GlobalFunctions.playground">
       </FileRef>
    </Group>
 </Workspace>

@@ -67,9 +67,6 @@ struct Parser<Token, Result> {
   let p: Slice<Token> -> SequenceOf<(Result, Slice<Token>)>
 }
 
-//  But, what's a slice?
-//  http://natecook.com/blog/2014/09/slicing-for-speed/
-
 
 /*---------------------------------------------------------------------/
 //  Simple example: Just parse single character "a"
