@@ -90,6 +90,9 @@
       <FileRef
          location = "group:LSB_B011_ParserCombinators.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_B012_UsefulParsers.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
