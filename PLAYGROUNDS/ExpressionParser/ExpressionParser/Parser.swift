@@ -11,7 +11,7 @@ import Foundation
 /*---------------------------------------------------------/
 //  Extensions
 /---------------------------------------------------------*/
-extension String {
+public extension String {
   var characters: [Character] {
     var result: [Character] = []
     for c in self {
@@ -66,7 +66,8 @@ public struct Parser<Token, Result> {
   public init(_ p: Slice<Token> -> SequenceOf<(Result, Slice<Token>)>) {
     self.p = p
   }
-  let p: Slice<Token> -> SequenceOf<(Result, Slice<Token>)>
+  
+  public let p: Slice<Token> -> SequenceOf<(Result, Slice<Token>)>
 }
 
 
@@ -87,7 +88,7 @@ func parseA() -> Parser<Character, Character> {
 
 
 // Let's automate Parser testing
-func testParser<A>(parser: Parser<Character, A>, input: String) -> String {
+public func testParser<A>(parser: Parser<Character, A>, input: String) -> String {
   var result: [String] = []
   for (x, s) in parser.p(input.slice) {
     result += ["Success, found \(x), remainder: \(Array(s))"]
@@ -112,7 +113,7 @@ func satisfy<Token>(condition: Token -> Bool) -> Parser<Token, Token> {
 
 
 // But we can make it shorter
-func token<Token: Equatable>(t: Token) -> Parser<Token, Token> {
+public func token<Token: Equatable>(t: Token) -> Parser<Token, Token> {
   return satisfy { $0 == t }
 }
 
@@ -168,7 +169,7 @@ func +<A>(l: SequenceOf<A>, r: SequenceOf<A>) -> SequenceOf<A> {
 //  Choice operator - Combining multiple parsers
 /---------------------------------------------------------------------*/
 infix operator <|> { associativity right precedence 130 }
-func <|> <Token, A>(l: Parser<Token, A>,
+public func <|> <Token, A>(l: Parser<Token, A>,
   r: Parser<Token, A>) -> Parser<Token, A> {
     return Parser { input in
       return l.p(input) + r.p(input)
@@ -231,8 +232,16 @@ func combinator<Token, A, B>(l: Parser<Token, A -> B>,
 //  Pure - Returns a value in a default context
 //  pure :: a -> f a
 /---------------------------------------------------------------------*/
-func pure<Token, A>(value: A) -> Parser<Token, A> {
+public func pure<Token, A>(value: A) -> Parser<Token, A> {
   return Parser { one((value, $0)) }
+}
+
+
+/*---------------------------------------------------------------------/
+//  Fail - Returns an unsuccessful parser
+/---------------------------------------------------------------------*/
+public func fail<Token, Result>() -> Parser<Token, Result> {
+  return Parser { _ in none() }
 }
 
 
@@ -245,9 +254,9 @@ func pure<Token, A>(value: A) -> Parser<Token, A> {
 //   - Excerpt From: Miran Lipovaca. “Learn You a Haskell for Great Good!.” iBooks.
 /---------------------------------------------------------------------*/
 infix operator <*> { associativity left precedence 150 }
-func <*><Token, A, B>(l: Parser<Token, A -> B>,
-  r: Parser<Token, A>)
-  -> Parser<Token, B> {
+public func <*><Token, A, B>(l: Parser<Token, A -> B>,
+                             r: Parser<Token, A>)
+                             -> Parser<Token, B> {
     return combinator(l, r)
 }
 
@@ -276,7 +285,7 @@ func member(set: NSCharacterSet, character: Character) -> Bool {
 }
 
 
-func characterFromSet(set: NSCharacterSet) -> Parser<Character, Character> {
+public func characterFromSet(set: NSCharacterSet) -> Parser<Character, Character> {
   return satisfy { return member(set, $0) }
 }
 
@@ -288,7 +297,7 @@ let decimalDigit = characterFromSet(decimals)
 /*---------------------------------------------------------------------/
 //  Zero or More
 /---------------------------------------------------------------------*/
-func prepend<A>(l: A) -> [A] -> [A] {
+public func prepend<A>(l: A) -> [A] -> [A] {
   return { (x: [A]) in [l] + x }
 }
 
@@ -299,7 +308,7 @@ func lazy<Token, A>(f: @autoclosure () -> Parser<Token, A>) -> Parser<Token, A> 
 }
 
 
-func zeroOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
+public func zeroOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
   return (pure(prepend) <*> p <*> lazy(zeroOrMore(p))) <|> pure([])
 }
 
@@ -307,7 +316,7 @@ func zeroOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
 /*---------------------------------------------------------------------/
 //  One or More
 /---------------------------------------------------------------------*/
-func oneOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
+public func oneOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
   return pure(prepend) <*> p <*> zeroOrMore(p)
 }
 
@@ -318,7 +327,7 @@ func oneOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
 //  a.k.a Haskell's <$>
 /---------------------------------------------------------------------*/
 infix operator </> { precedence 170 }
-func </> <Token, A, B>(l: A -> B,
+public func </> <Token, A, B>(l: A -> B,
   r: Parser<Token, A>) -> Parser<Token, B> {
     
     return pure(l) <*> r
@@ -342,8 +351,9 @@ let number = { characters in string(characters).toInt()! } </> oneOrMore(decimal
 //  <*  Throw away the right-hand result
 /---------------------------------------------------------------------*/
 infix operator <*  { associativity left precedence 150 }
-func <* <Token, A, B>(p: Parser<Token, A>, q: Parser<Token, B>)
-  -> Parser<Token, A> {
+public func <* <Token, A, B>(p: Parser<Token, A>,
+                             q: Parser<Token, B>)
+                             -> Parser<Token, A> {
     
     return {x in {_ in x} } </> p <*> q
 }
@@ -353,14 +363,14 @@ func <* <Token, A, B>(p: Parser<Token, A>, q: Parser<Token, B>)
 //  *>  Throw away the left-hand result
 /---------------------------------------------------------------------*/
 infix operator  *> { associativity left precedence 150 }
-func *> <Token, A, B>(p: Parser<Token, A>,
+public func *> <Token, A, B>(p: Parser<Token, A>,
   q: Parser<Token, B>) -> Parser<Token, B> {
     
     return {_ in {y in y} } </> p <*> q
 }
 
 
-func curry<A, B, C>(f: (A, B) -> C) -> A -> B -> C {
+public func curry<A, B, C>(f: (A, B) -> C) -> A -> B -> C {
   return { x in { y in f(x, y) } }
 }
 
@@ -402,7 +412,7 @@ func op(character: Character,
 }
 
 
-func eof<A>() -> Parser<A, ()> {
+public func eof<A>() -> Parser<A, ()> {
   return Parser { stream in
     if (stream.isEmpty) {
       return one(((), stream))
