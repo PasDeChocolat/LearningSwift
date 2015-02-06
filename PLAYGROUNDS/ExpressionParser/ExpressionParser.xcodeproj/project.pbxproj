@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF93094A1A84BDB200591CA4 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9309491A84BDB200591CA4 /* Token.swift */; };
+		CFB293B21A84DB6B00ABEBE8 /* TokenParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB293B11A84DB6B00ABEBE8 /* TokenParser.swift */; };
 		CFC5333F1A84799500DD46EE /* ExpressionParser.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC5333E1A84799500DD46EE /* ExpressionParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFC533451A84799500DD46EE /* ExpressionParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC533391A84799500DD46EE /* ExpressionParser.framework */; };
 		CFC5334C1A84799500DD46EE /* ExpressionParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5334B1A84799500DD46EE /* ExpressionParserTests.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		CF9309491A84BDB200591CA4 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		CFB293B11A84DB6B00ABEBE8 /* TokenParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenParser.swift; sourceTree = "<group>"; };
 		CFC533391A84799500DD46EE /* ExpressionParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExpressionParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC5333D1A84799500DD46EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC5333E1A84799500DD46EE /* ExpressionParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpressionParser.h; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				CFC5333E1A84799500DD46EE /* ExpressionParser.h */,
 				CFC533551A8479BF00DD46EE /* Parser.swift */,
 				CF9309491A84BDB200591CA4 /* Token.swift */,
+				CFB293B11A84DB6B00ABEBE8 /* TokenParser.swift */,
 				CFC5333C1A84799500DD46EE /* Supporting Files */,
 			);
 			path = ExpressionParser;
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFC533561A8479BF00DD46EE /* Parser.swift in Sources */,
+				CFB293B21A84DB6B00ABEBE8 /* TokenParser.swift in Sources */,
 				CF93094A1A84BDB200591CA4 /* Token.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

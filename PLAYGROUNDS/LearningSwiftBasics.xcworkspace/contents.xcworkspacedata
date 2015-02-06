@@ -105,6 +105,9 @@
       <FileRef
          location = "group:LSB_B015_ParsingTokens.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_B016_Evaluation.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
