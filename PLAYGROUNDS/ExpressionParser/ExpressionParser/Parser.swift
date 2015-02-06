@@ -100,7 +100,7 @@ public func testParser<A>(parser: Parser<Character, A>, input: String) -> String
 /*---------------------------------------------------------------------/
 //  Make generic over any kind of token
 /---------------------------------------------------------------------*/
-func satisfy<Token>(condition: Token -> Bool) -> Parser<Token, Token> {
+public func satisfy<Token>(condition: Token -> Bool) -> Parser<Token, Token> {
   return Parser { x in
     if let (head, tail) = x.decompose {
       if condition(head) {
@@ -303,7 +303,7 @@ public func prepend<A>(l: A) -> [A] -> [A] {
 
 
 // So we use an autoclosure instead
-func lazy<Token, A>(f: @autoclosure () -> Parser<Token, A>) -> Parser<Token, A> {
+public func lazy<Token, A>(f: @autoclosure () -> Parser<Token, A>) -> Parser<Token, A> {
   return Parser { x in f().p(x) }
 }
 
@@ -398,7 +398,7 @@ func flip<A, B, C>(f: (B, A) -> C) -> (A, B) -> C {
 }
 
 
-typealias Calculator = Parser<Character, Int>
+public typealias Calculator = Parser<Character, Int>
 typealias Op = (Character, (Int, Int) -> Int)
 let operatorTable: [Op] = [("*", *), ("/", /), ("+", +), ("-", -)]
 

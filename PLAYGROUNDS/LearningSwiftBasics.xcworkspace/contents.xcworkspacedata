@@ -100,7 +100,10 @@
          location = "group:LSB_B013_ExpressionParser.playground">
       </FileRef>
       <FileRef
-         location = "group:LSB_B014_TokenizationAndParsing.playground">
+         location = "group:LSB_B014_Tokenization.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_B015_ParsingTokens.playground">
       </FileRef>
    </Group>
    <Group

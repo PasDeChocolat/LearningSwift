@@ -2,7 +2,7 @@ import UIKit
 import ExpressionParser
 
 /*
-//  Tokenization and Parsing
+//  Tokenization
 //
 //  Based on:
 //  http://www.objc.io/books/ (Chapter 13, Case Study: Build a Spreadsheet Application)
@@ -19,7 +19,7 @@ let myParser: Parser<Character, Character> = Parser { _ in
 
 
 /*=====================================================================/
-//  Tokenization and Parsing
+//  Tokenization
 /=====================================================================*/
 
 
@@ -53,22 +53,22 @@ func ==(lhs: Token, rhs: Token) -> Bool {
 }
 
 
-//extension Token : Printable {
-//  var description: String {
-//    switch (self) {
-//    case Number(let x):
-//      return "\(x)"
-//    case .Operator(let o):
-//      return o
-//    case .Reference(let row, let column):
-//      return "\(row)\(column)"
-//    case .Punctuation(let x):
-//      return x
-//    case .FunctionName(let x):
-//      return x
-//    }
-//  }
-//}
+extension Token : Printable {
+  var description: String {
+    switch (self) {
+    case Number(let x):
+      return "\(x)"
+    case .Operator(let o):
+      return o
+    case .Reference(let row, let column):
+      return "\(row)\(column)"
+    case .Punctuation(let x):
+      return x
+    case .FunctionName(let x):
+      return x
+    }
+  }
+}
 
 
 /*---------------------------------------------------------------------/
@@ -153,16 +153,6 @@ resultNat!.0 == 4_242
 let tNumber = { Token.Number($0) } </> naturalNumber
 
 
-/*---------------------------------------------------------/
-//  parse - Debug helper
-/---------------------------------------------------------*/
-func parse<A>(parser: Parser<Character, A>, input: String) -> A? {
-  for (result, _) in (parser <* eof()).p(input.slice) {
-    return result
-  }
-  return nil
-}
-
 // See the Int wrapped in the Token
 switch parse(tNumber, "42")! {
 case let .Number(x):
@@ -226,28 +216,31 @@ func ignoreLeadingWhitespace<A>(p: Parser<Character, A>) -> Parser<Character, A>
 /*---------------------------------------------------------/
 //  tokenize - Putting it all together
 /---------------------------------------------------------*/
-func tokenize() -> Parser<Character, [Token]> {
-  let tokenParsers = [tNumber, tOperator, tReference, tPunctuation, tName]
-  return zeroOrMore(ignoreLeadingWhitespace(oneOf(tokenParsers)))
-}
+// Moved to ExpressionParser Framework
+//func tokenize() -> Parser<Character, [Token]> {
+//  let tokenParsers = [tNumber, tOperator, tReference, tPunctuation, tName]
+//  return zeroOrMore(ignoreLeadingWhitespace(oneOf(tokenParsers)))
+//}
 
 
 let parsedTokens = parse(tokenize(), "1+2*3+SUM(A4:A6)")
 parsedTokens!.count
 
 func readToken(t: Token) -> String {
+  var header = ""
   switch t {
-  case let .Number(n):
-    return "Number: \(n)"
-  case let .Operator(op):
-    return "Operator: \(op)"
-  case let .Reference(cap, nat):
-    return "Reference: \(cap)\(nat)"
-  case let .Punctuation(p):
-    return "Punctuation: \(p)"
-  case let .FunctionName(fn):
-    return "Function Name: \(fn)"
+  case .Number:
+    header = "Number"
+  case .Operator:
+    header = "Operator"
+  case .Reference:
+    header = "Reference"
+  case .Punctuation:
+    header = "Punctuation"
+  case .FunctionName:
+    header = "Function Name"
   }
+  return "\(header): \(t.description)"
 }
 
 func readTokens(tokens: [Token]) -> String {
