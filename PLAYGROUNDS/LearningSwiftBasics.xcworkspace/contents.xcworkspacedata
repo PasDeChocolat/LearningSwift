@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ExpressionParser/ExpressionParser.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:FunctionalDiagrams/FunctionalDiagrams.xcodeproj">
    </FileRef>
    <Group
@@ -95,6 +98,9 @@
       </FileRef>
       <FileRef
          location = "group:LSB_B013_ExpressionParser.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_B014_TokenizationAndParsing.playground">
       </FileRef>
    </Group>
    <Group

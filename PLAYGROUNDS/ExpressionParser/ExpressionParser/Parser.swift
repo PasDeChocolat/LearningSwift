@@ -1,13 +1,12 @@
-import UIKit
-
-/*
-//  Expression Parser
 //
-//  Based on:
-//  http://www.objc.io/books/ (Chapter 12, Parser Combinators)
-//    (Functional Programming in Swift, by Chris Eidhof, Florian Kugler, and Wouter Swierstra)
-/===================================*/
+//  Parser.swift
+//  ExpressionParser
+//
+//  Created by Kyle Oba on 2/5/15.
+//  Copyright (c) 2015 Pas de Chocolat. All rights reserved.
+//
 
+import Foundation
 
 /*---------------------------------------------------------/
 //  Extensions
@@ -45,11 +44,11 @@ extension Slice {
 /*---------------------------------------------------------/
 //  Helpers
 /---------------------------------------------------------*/
-func none<A>() -> SequenceOf<A> {
+public func none<A>() -> SequenceOf<A> {
   return SequenceOf(GeneratorOf { nil } )
 }
 
-func one<A>(x: A) -> SequenceOf<A> {
+public func one<A>(x: A) -> SequenceOf<A> {
   return SequenceOf(GeneratorOfOne(x))
 }
 
@@ -58,12 +57,15 @@ func one<A>(x: A) -> SequenceOf<A> {
 //  Parser Type
 //  We use a struct because typealiases don't support generic types.
 //
-//  “We define a parser as a function that takes a slice of tokens, 
+//  “We define a parser as a function that takes a slice of tokens,
 //   processes some of these tokens, and returns a tuple of the result
 //   and the remainder of the tokens.”
 //  - Excerpt From: Chris Eidhof. “Functional Programming in Swift.” iBooks.
 /---------------------------------------------------------------------*/
-struct Parser<Token, Result> {
+public struct Parser<Token, Result> {
+  public init(_ p: Slice<Token> -> SequenceOf<(Result, Slice<Token>)>) {
+    self.p = p
+  }
   let p: Slice<Token> -> SequenceOf<(Result, Slice<Token>)>
 }
 
@@ -86,11 +88,11 @@ func parseA() -> Parser<Character, Character> {
 
 // Let's automate Parser testing
 func testParser<A>(parser: Parser<Character, A>, input: String) -> String {
-    var result: [String] = []
-    for (x, s) in parser.p(input.slice) {
-      result += ["Success, found \(x), remainder: \(Array(s))"]
-    }
-    return result.isEmpty ? "Parsing failed." : join("\n", result)
+  var result: [String] = []
+  for (x, s) in parser.p(input.slice) {
+    result += ["Success, found \(x), remainder: \(Array(s))"]
+  }
+  return result.isEmpty ? "Parsing failed." : join("\n", result)
 }
 
 
@@ -167,7 +169,7 @@ func +<A>(l: SequenceOf<A>, r: SequenceOf<A>) -> SequenceOf<A> {
 /---------------------------------------------------------------------*/
 infix operator <|> { associativity right precedence 130 }
 func <|> <Token, A>(l: Parser<Token, A>,
-                    r: Parser<Token, A>) -> Parser<Token, A> {
+  r: Parser<Token, A>) -> Parser<Token, A> {
     return Parser { input in
       return l.p(input) + r.p(input)
     }
@@ -210,8 +212,8 @@ func sequence<Token, A, B>(l: Parser<Token, A>, r: Parser<Token, B>)
 /---------------------------------------------------------------------*/
 // The Combinator
 func combinator<Token, A, B>(l: Parser<Token, A -> B>,
-                             r: Parser<Token, A>)
-                             -> Parser<Token, B> {
+  r: Parser<Token, A>)
+  -> Parser<Token, B> {
     
     return Parser { input in
       let leftResults = l.p(input)
@@ -237,16 +239,16 @@ func pure<Token, A>(value: A) -> Parser<Token, A> {
 /*---------------------------------------------------------------------/
 //  <*>
 //
-//  “for Maybe, <*> extracts the function from the left value if it’s 
+//  “for Maybe, <*> extracts the function from the left value if it’s
 //   a Just and maps it over the right value. If any of the parameters
 //   is Nothing, Nothing is the result.”
 //   - Excerpt From: Miran Lipovaca. “Learn You a Haskell for Great Good!.” iBooks.
 /---------------------------------------------------------------------*/
 infix operator <*> { associativity left precedence 150 }
 func <*><Token, A, B>(l: Parser<Token, A -> B>,
-                      r: Parser<Token, A>)
-                      -> Parser<Token, B> {
-  return combinator(l, r)
+  r: Parser<Token, A>)
+  -> Parser<Token, B> {
+    return combinator(l, r)
 }
 
 
@@ -342,7 +344,7 @@ let number = { characters in string(characters).toInt()! } </> oneOrMore(decimal
 infix operator <*  { associativity left precedence 150 }
 func <* <Token, A, B>(p: Parser<Token, A>, q: Parser<Token, B>)
   -> Parser<Token, A> {
-
+    
     return {x in {_ in x} } </> p <*> q
 }
 
@@ -363,11 +365,6 @@ func curry<A, B, C>(f: (A, B) -> C) -> A -> B -> C {
 }
 
 
-/*=====================================================================/
-//  Expression Parser
-/=====================================================================*/
-
-
 /*---------------------------------------------------------------------/
 //  </  Consumes, but doesn't use its right operand
 /---------------------------------------------------------------------*/
@@ -378,8 +375,8 @@ func </ <Token, A, B>(l: A, r: Parser<Token, B>) -> Parser<Token, A> {
 
 
 func optionallyFollowed<A>(l: Parser<Character, A>,
-                           r: Parser<Character, A -> A>)
-                           -> Parser<Character, A> {
+  r: Parser<Character, A -> A>)
+  -> Parser<Character, A> {
     
     let apply: A -> (A -> A) -> A = { x in { f in f(x) } }
     return apply </> l <*> (r <|> pure { $0 })
@@ -397,8 +394,8 @@ let operatorTable: [Op] = [("*", *), ("/", /), ("+", +), ("-", -)]
 
 
 func op(character: Character,
-        evaluate: (Int, Int) -> Int,
-        operand: Calculator) -> Calculator {
+  evaluate: (Int, Int) -> Int,
+  operand: Calculator) -> Calculator {
     
     let withOperator = curry(flip(evaluate)) </ token(character) <*> operand
     return optionallyFollowed(operand, withOperator)
@@ -413,11 +410,3 @@ func eof<A>() -> Parser<A, ()> {
     return none()
   }
 }
-
-
-func pExpression() -> Calculator {
-  return operatorTable.reduce(number, { next, inOp in
-    op(inOp.0, inOp.1, next)
-  })
-}
-testParser(pExpression() <* eof(), "10-3*2")
