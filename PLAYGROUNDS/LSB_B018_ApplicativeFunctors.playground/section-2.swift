@@ -46,3 +46,22 @@ let opt5: Int? = 5
 let opt7: Int? = 7
 addOptionals(opt5, opt7)!
 
+
+/*---------------------------------------------------------------------/
+//  </> 
+//
+//  ==> Haskell's <$>
+//
+//  (<$>) :: (Functor f) => (a -> b) -> f a -> f b
+//  f <$> x = fmap f x
+/---------------------------------------------------------------------*/
+infix operator </> { precedence 170 }
+public func </> <A, B>(l: A -> B,
+  r: A?) -> B? {
+    
+    return pure(l) <*> r
+}
+
+curry(+) </> opt5 <*> opt7
+
+
