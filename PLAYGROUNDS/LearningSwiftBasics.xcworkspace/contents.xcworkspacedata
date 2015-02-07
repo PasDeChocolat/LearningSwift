@@ -108,6 +108,9 @@
       <FileRef
          location = "group:LSB_B016_Evaluation.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_B017_Functors.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
