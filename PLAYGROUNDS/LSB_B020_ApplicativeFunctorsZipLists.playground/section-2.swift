@@ -146,21 +146,13 @@ func <*><B,C,D>(fs: ZipList<C->D,C->D>, xs: ZipList<B,C>) -> ZipList<B,D> {
     let xList = getZipList(xs)
     let xCount = count(xs)!
     let fns = repeater.take(xCount)
-    let ls = Array(0..<xCount).reduce([D]()) { memo, i in
-      var m = memo
-      let f = fns[i]
-      m.append(f(xList[i]))
-      return m
-    }
+    let ls = Array(0..<xCount).reduce([]) { $0 + [fns[$1]( xList[$1] )] }
     return ZipList.List(ls)
     
   case let .List(fns):
     let xList = getZipList(xs)
     let minCount = min(fns.count, xList.count)
-    let ls = Array(0..<minCount).reduce([D]()) { memo, i in
-      let f = fns[i]
-      return memo + [f(xList[i])]
-    }
+    let ls = Array(0..<minCount).reduce([]) { $0 + [fns[$1]( xList[$1] )] }
     return ZipList.List(ls)
   }
 }
@@ -173,16 +165,19 @@ func addOne(x: Int) -> Int {
   return x + 1
 }
 
-let rr1 = ZipList.Pure(Repeater<Int->Int>(addOne)) <*> ZipList<Int2Int,Int>.List([1,2,3])
+let zList123 = ZipList<Int2Int,Int>.List([1,2,3])
+let zListTens = ZipList<Int2Int,Int>.List([10,20,30])
+
+let rr1 = ZipList.Pure(Repeater<Int->Int>(addOne)) <*> zList123
 getZipList(rr1)
 
-let rr2 = pure(addOne) <*> ZipList<Int2Int,Int>.List([1,2,3])
+let rr2 = pure(addOne) <*> zList123
 getZipList(rr2)
 
 func adder(x: Int, y: Int) -> Int {
   return x + y
 }
-let rr3 = pure(curry(adder)) <*> ZipList<Int2Int,Int>.List([1,2,3]) <*> ZipList<Int2Int,Int>.List([10,20,30])
+let rr3 = pure(curry(adder)) <*> zList123 <*> zListTens
 getZipList(rr3)
 
 
