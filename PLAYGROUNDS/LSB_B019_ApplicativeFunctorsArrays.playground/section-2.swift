@@ -27,16 +27,8 @@ func curry<A, B, C>(f: (A, B) -> C) -> A -> B -> C {
 /---------------------------------------------------------------------*/
 infix operator <*> { associativity left precedence 150 }
 func <*><A, B>(fs: [(A -> B)], xs: [A]) -> [B] {
-  if fs.isEmpty {
-    return []
-  }
-  var result = [B]()
-  for f in fs {
-    for x in xs {
-      result.append(f(x))
-    }
-  }
-  return result
+  if fs.isEmpty { return [] }
+  return reduce(fs, []) { $0 + xs.map($1) }
 }
 
 
