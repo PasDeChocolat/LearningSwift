@@ -117,6 +117,9 @@
       <FileRef
          location = "group:LSB_B019_ApplicativeFunctorsArrays.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_B020_ApplicativeFunctorsZipLists.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"

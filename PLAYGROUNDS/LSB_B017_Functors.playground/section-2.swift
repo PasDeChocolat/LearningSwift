@@ -44,8 +44,9 @@ optPlusOne!  // <-- unwrap!
 /*---------------------------------------------------------------------/
 //  Trees are functors
 //
-//  From Learn You a Haskell for Great Good, Chapter 7
-//  - by Miran Lipovača
+//  From Learn You a Haskell for Great Good, 
+//    Chapter 7, Making Our Own Types and Type Classes
+//    - by Miran Lipovača
 //
 //  instance Functor Tree where
 //  fmap f EmptyTree = EmptyTree
