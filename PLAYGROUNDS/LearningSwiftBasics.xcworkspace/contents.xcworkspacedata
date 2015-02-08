@@ -120,6 +120,9 @@
       <FileRef
          location = "group:LSB_B020_ApplicativeFunctorsZipLists.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_B021_FunctionalZippers.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
