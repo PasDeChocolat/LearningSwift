@@ -205,8 +205,8 @@ func >>=<U, T>(optional: T?, f: T -> U?) -> U? {
   return optional.map { f($0)! }
 }
 
-func opt<T>(zipper: (Tree<T>, [Crumb<T>])) -> (Tree<T>, [Crumb<T>])? {
-  return zipper
+func opt<T>(x: T) -> T? {
+  return x
 }
 
 let bindRight = opt(freeZipper) >>= goRight
