@@ -114,6 +114,9 @@
       <FileRef
          location = "group:LSB_B018_ApplicativeFunctors.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_B019_ApplicativeFunctorsArrays.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
