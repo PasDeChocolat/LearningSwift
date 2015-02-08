@@ -135,7 +135,7 @@ func curry<A, B, C>(f: (A, B) -> C) -> A -> B -> C {
   return { x in { y in f(x, y) } }
 }
 
-2 + 2
+
 /*---------------------------------------------------------------------/
 //  <*>
 /---------------------------------------------------------------------*/
@@ -189,11 +189,18 @@ getZipList(rr3)
 //  (<$>) :: (Functor f) => (a -> b) -> f a -> f b
 //  f <$> x = fmap f x
 /---------------------------------------------------------------------*/
-//infix operator </> { precedence 170 }
-//public func </> <A, B>(l: A -> B, r: [A]) -> [B] {
-//  return pure(l) <*> r
-//}
-//
-//curry(+) </> [10, 20, 30] <*> [1, 2, 3]
+infix operator </> { precedence 170 }
+func </> <B,C,D>(l: C->D, r: ZipList<B,C>) -> ZipList<B,D> {
+  return pure(l) <*> r
+}
+
+let rr4 = addOne </> zList123
+getZipList(rr4)
+
+let rr5 = curry(adder) </> zList123 <*> zListTens
+getZipList(rr5)
+
+
+
 
 
