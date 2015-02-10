@@ -60,12 +60,6 @@ let freeTree = node("P",
 /*---------------------------------------------------------------------/
 //  Breadcrumbs
 /---------------------------------------------------------------------*/
-extension Array {
-  var decompose: (head: T, tail: [T])? {
-    return (count > 0) ? (self[0], Array(self[1..<count])) : nil
-  }
-}
-
 enum Crumb<T> {
   case Left(Box<T>, Tree<T>)
   case Right(Box<T>, Tree<T>)
@@ -88,6 +82,16 @@ func goRight<T>(zipper: (Tree<T>, [Crumb<T>])) -> (Tree<T>, [Crumb<T>])? {
     return nil
   case let .Node(x, l, r):
     return (r.unbox, [Crumb.Right(x, l.unbox)] + crumbs)
+  }
+}
+
+
+/*---------------------------------------------------------------------/
+//  `decompose` is a helper for `goUp`
+/---------------------------------------------------------------------*/
+extension Array {
+  var decompose: (head: T, tail: [T])? {
+    return (count > 0) ? (self[0], Array(self[1..<count])) : nil
   }
 }
 
@@ -118,6 +122,7 @@ func elements<T>(tree: Tree<T>) -> [T] {
     return elements(left.unbox) + [x.unbox] + elements(right.unbox)
   }
 }
+
 elements(freeTree)
 
 
@@ -209,11 +214,16 @@ func opt<T>(x: T) -> T? {
   return x
 }
 
+
 let bindRight = opt(freeZipper) >>= goRight
 elements(bindRight!.0)
 
+
+
 let bindLeft = opt(freeZipper) >>= goLeft
 elements(bindLeft!.0)
+
+
 
 let bindLLLeft = opt(freeZipper) >>= goLeft >>= goLeft >>= goLeft
 elements(bindLLLeft!.0)
