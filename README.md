@@ -44,6 +44,7 @@ Pull requests and other forms of collaboration welcome.
 - how to read function signatures, higher order functions
   - (PLAYGROUNDS/LSB_007_Functions.playground)
 - list comprehensions
+  - (Something like this... PLAYGROUNDS/LSB_B019_ApplicativeFunctorsArrays.playground)
 
 ### Resources
 - Please see our "[Resources](https://github.com/PasDeChocolat/LearningSwift/blob/master/RESOURCES.md)" list.
