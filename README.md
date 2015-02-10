@@ -48,7 +48,6 @@ Pull requests and other forms of collaboration welcome.
 
 ### Resources
 - Please see our "[Resources](https://github.com/PasDeChocolat/LearningSwift/blob/master/RESOURCES.md)" list.
-- Apple's [Adventure: Building a SpriteKit Game Using Swift](https://developer.apple.com/library/ios/samplecode/Adventure-Swift/Introduction/Intro.html)
 
 [swift]: https://developer.apple.com/swift/ "A new programming language for iOS and OS X."
 [announcement]: http://www.theverge.com/2014/6/2/5772992/apple-has-a-new-programming-language-called-swift-and-it-totally-rules
