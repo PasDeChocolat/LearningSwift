@@ -20,12 +20,15 @@ Pull requests and other forms of collaboration welcome.
 
 ### Suggested Topics
 - currying
+  - (PLAYGROUNDS/LSB_C005_Currying.playground)
 - pattern matching
   - (PLAYGROUNDS/LSB_013_Enumerations.playground)
 - initializers
   - (PLAYGROUNDS/LSB_011_Classes.playground)
 - struct and class differences
+  - (PLAYGROUNDS/LSB_B003_ClassesAndStructs.playground)
 - immutability
+  - (PLAYGROUNDS/LSB_002_VariablesAndConstants.playground)
 - ? ! and optionals
   - (PLAYGROUNDS/LSB_009_Optionals.playground)
 - nullability safety rules
@@ -33,6 +36,7 @@ Pull requests and other forms of collaboration welcome.
 - trailing closures
   - (PLAYGROUNDS/LSB_008_Closures.playground)
 - internal and external parameter names, first parameter exception to the rule
+  - (PLAYGROUNDS/LSB_011_Classes.playground)
 - destructuring
   - (PLAYGROUNDS/LSB_011_Classes.playground)
 - generics
