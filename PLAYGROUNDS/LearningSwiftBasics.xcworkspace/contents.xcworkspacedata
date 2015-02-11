@@ -22,6 +22,9 @@
       <FileRef
          location = "group:LSB_D004_RPNCalculation.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_D005_MapFilterReduce.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"

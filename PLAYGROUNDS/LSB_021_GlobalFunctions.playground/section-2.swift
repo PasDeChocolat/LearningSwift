@@ -46,14 +46,9 @@ distance(1, 3)
 /---------------------------------*/
 count(1...3)
 count(1..<5)
-
-
-/*---------------------------------/
-//  countElements
-/---------------------------------*/
-countElements([1, 2, 3])
-countElements("word")
-countElements(["a":1, "b":2])
+count([1, 2, 3])
+count("word")
+count(["a":1, "b":2])
 
 
 /*---------------------------------/
@@ -74,9 +69,9 @@ last([Int]())
 last([1,2,3])!
 last("")
 last("word")!
-last([String:Int]())
-last(["a":1, "b":2])!.0
-last(["a":1, "b":2])!.1
+//last([String:Int]())     // No longer supported
+//last(["a":1, "b":2])!.0  // No longer supported
+//last(["a":1, "b":2])!.1  // No longer supported
 
 
 /*---------------------------------/
@@ -233,7 +228,7 @@ v = Array(1...10)
 split(v, { (x) -> Bool in
   x == 5
 })
-var aryOfIntArys = split(v) { $0 == 5 }
+var aryOfIntArys = split(v, { $0 == 5 })
 aryOfIntArys
 
 v = Array(1...10)
@@ -252,7 +247,7 @@ s = "The quick brown fox jumped."
 var words = split(s, { $0 == " " }, maxSplit: 3, allowEmptySlices: true)
 words
 
-words = split(s) { $0 == " " }
+words = split(s, { $0 == " " })
 words
 
 
