@@ -10,6 +10,7 @@
   - Integrating Swift with Objective-C: Session 406
   - Swift Interoperability In Depth: Session 407
   - Advanced Swift Debugging in LLDB: Session 410
+- [Functional Swift Conference 2014](http://2014.funswiftconf.com/)
 
 ### Books / References
 - Free
@@ -21,9 +22,16 @@
 - Style Guide: [The Official raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide)
 
 ### Online
-- [Apple Swift Overview](https://developer.apple.com/swift/)
-- [Apple Swift Blog](https://developer.apple.com/swift/blog/)
-- [Apple Swift Resources](https://developer.apple.com/swift/resources/)
+- References
+  - [Apple Swift Overview](https://developer.apple.com/swift/)
+  - [Apple Swift Resources](https://developer.apple.com/swift/resources/)
+- Blogs
+  - [Apple Swift Blog](https://developer.apple.com/swift/blog/)
+  - [Few but ripe...](http://www.fewbutripe.com/)
+  - [Realm's blog](http://realm.io/news/)
+  - [objc Snippets](http://www.objc.io/snippets/)
+  - [NSHipster](http://nshipster.com/)
+  - [Cocoaphony: Functional](http://robnapier.net/categories/functional)
 
 ### Sample Apps
 - Apple's [Adventure: Building a SpriteKit Game Using Swift](https://developer.apple.com/library/ios/samplecode/Adventure-Swift/Introduction/Intro.html)
