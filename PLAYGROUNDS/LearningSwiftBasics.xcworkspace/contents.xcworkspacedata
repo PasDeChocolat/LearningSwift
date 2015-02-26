@@ -25,6 +25,15 @@
       <FileRef
          location = "group:LSB_D005_MapFilterReduce.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_D006_Composability.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_D007_EverythingIsReduce.playground">
+      </FileRef>
+      <FileRef
+         location = "group:LSB_D008_Transducers.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
