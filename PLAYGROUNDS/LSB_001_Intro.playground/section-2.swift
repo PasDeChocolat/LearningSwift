@@ -2,18 +2,18 @@ import UIKit
 
 
 /*---------------------/
-   Basics
+Basics
 /---------------------*/
 
 // This is a comment.
 println("hello") // Another comment
-/* A bigger 
-   ...
-   comment. */
+/* A bigger
+...
+comment. */
 /* Another
-   big
+big
 /* comment
-   here */
+here */
 */
 
 // You can also import just submodules and features.
@@ -45,12 +45,3 @@ let someNumber = 42_012_123
 
 
 
-
-
-
-
-/*---------------------/
-   A Taste of Swift
-/---------------------*/
-
-sorted([1,2,5,3,4,1])

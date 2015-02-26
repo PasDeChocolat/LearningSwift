@@ -34,6 +34,9 @@
       <FileRef
          location = "group:LSB_D008_Transducers.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_D009_DeMorgansLaw.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
@@ -139,6 +142,9 @@
    <Group
       location = "container:"
       name = "A-Level Basic Reference Playgrounds">
+      <FileRef
+         location = "group:LSB_001_Intro.playground">
+      </FileRef>
       <FileRef
          location = "group:LSB_002_VariablesAndConstants.playground">
       </FileRef>
