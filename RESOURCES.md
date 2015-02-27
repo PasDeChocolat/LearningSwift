@@ -25,6 +25,7 @@
   - [Apple Swift Overview](https://developer.apple.com/swift/)
   - [Apple Swift Resources](https://developer.apple.com/swift/resources/)
   - [The Official raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide)
+  - [Github Swift Style Guide](https://github.com/github/swift-style-guide)
 - Blogs
   - [Apple Swift Blog](https://developer.apple.com/swift/blog/)
   - [Few but ripe...](http://www.fewbutripe.com/)
