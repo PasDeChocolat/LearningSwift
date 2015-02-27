@@ -63,13 +63,13 @@ let hint1 : Int = hints[0] // <-- infers an Int
 // By default this is an Array of AnyObject:
 var things = [3, 3.14, "pi"]
 String.fromCString(object_getClassName(things))
-_stdlib_getTypeName(things)
+//_stdlib_getTypeName(things)
 _stdlib_getDemangledTypeName(things)
 let ta = things[0]
 String.fromCString(object_getClassName(ta))
 let anyThing : AnyObject = things[0]           // <--- It's any object
-let firstThing : Int = things.first! as Int
-let pieThing : String = things.last! as String
+let firstThing : Int = things.first! as! Int
+let pieThing : String = things.last! as! String
 
 things[1]
 things[2]
@@ -210,13 +210,13 @@ catNames
 // Array algorithms (returning new arrays)...
 // filter
 var animals = ["dog", "cat", "swan", "meerkat"]
-var longAnimals = animals.filter { countElements($0) > 3 }
+var longAnimals = animals.filter { count($0) > 3 }
 longAnimals
 animals
 
 
 // map
-var bigAnimals = animals.map { countElements($0) > 3 ? "big " + $0 : $0 }
+var bigAnimals = animals.map { count($0) > 3 ? "big " + $0 : $0 }
 bigAnimals
 animals
 

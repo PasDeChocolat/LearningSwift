@@ -85,19 +85,18 @@ class Country {
   
   init(name: String, capitalName: String) {
     self.name = name
-    self.capitalCity = City(name: capitalName, country: self)
+    self.capitalCity = City(name: capitalName)
+    self.capitalCity.country = self
   }
 }
 
 class City {
-  // still non-optional
-  unowned let country: Country
+  var country: Country?
   
   let name: String
   
-  init(name: String, country: Country) {
+  init(name: String) {
     self.name = name
-    self.country = country
   }
 }
 

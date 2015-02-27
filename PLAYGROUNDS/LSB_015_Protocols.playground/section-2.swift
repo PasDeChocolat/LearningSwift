@@ -10,7 +10,7 @@ import UIKit
 /-----------------------------*/
 
 protocol Talking {
-  class var word: String { get }
+  static var word: String { get }
   var verbosity: Int { get set }
   func speak() -> String
 }
@@ -39,41 +39,6 @@ d.speak()
 d.verbosity = 5
 d.speak()
 
-
-/*-----------------------------/
-//  @objc with Optionals
-/-----------------------------*/
-
-@objc protocol Digging {
-  optional var numberPaws: Int { get }
-  optional func punctureWaterPipe() -> Bool
-}
-
-class Gopher: Digging {
-  let numberPaws = 4
-}
-
-class Shovel: Digging {
-  func punctureWaterPipe() -> Bool {
-    return true
-  }
-}
-
-// Note the protocol is the "type"
-let garyGopher:Digging = Gopher()
-let samSpade:Digging = Shovel()
-
-// Direct access: Explicit unwrap
-garyGopher.numberPaws!
-
-// Unimplemented optional method
-garyGopher.punctureWaterPipe?()
-
-// Unimplemented optional property
-samSpade.numberPaws?
-
-// Explicit unswrap
-samSpade.punctureWaterPipe!()
 
 
 /*-----------------------------/

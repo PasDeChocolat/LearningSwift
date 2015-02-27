@@ -180,20 +180,20 @@ func all<T>(xs: [T], predicate: T -> Bool) -> Bool {
   return true
 }
 
+let allFive = elements(five)
+let bigEnough = all(elements(five), { $0 > 3 })
+bigEnough
+
 
 // Verify the set in a binary search tree
 func isBST<T: Comparable>(tree: Tree<T>) -> Bool {
   switch tree {
-  case Tree.Leaf:
+  case .Leaf:
     return true
   case let Tree.Node(left, x, right):
-    let leftElements = elements(left.unbox)
-    let rightElements = elements(right.unbox)
-    return
-      all(leftElements)  { y in y < x.unbox } &&
-      all(rightElements) { y in y > x.unbox } &&
-      isBST(left.unbox) &&
-      isBST(right.unbox)
+    let allLeft = all(elements(left.unbox)) { $0 < x.unbox }
+    let allRight = all(elements(right.unbox)) { $0 > x.unbox }
+    return allLeft && allRight && isBST(left.unbox) && isBST(right.unbox)
   }
 }
 isBST(biggerTree2)

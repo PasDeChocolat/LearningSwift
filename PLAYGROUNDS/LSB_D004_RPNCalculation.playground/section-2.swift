@@ -191,7 +191,7 @@ func foldingFunction(all: [Double], op: String) -> [Double] {
 
 func solveRPN(expression: String) -> Double {
   let words = expression.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-  return words.reduce([], foldingFunction).first!
+  return words.reduce([], combine: foldingFunction).first!
 }
 
 solveRPN(expression)
@@ -237,8 +237,8 @@ func foldingFunction2(all: [Double], op: String) -> [Double] {
 }
 
 
-words("1 2 3 4").reduce([], foldingFunction2)
-words(expression).reduce([], foldingFunction2).first!
-words("4 √ 3 × 4 + 1 - √").reduce([], foldingFunction2).first!
+words("1 2 3 4").reduce([], combine: foldingFunction2)
+words(expression).reduce([], combine: foldingFunction2).first!
+words("4 √ 3 × 4 + 1 - √").reduce([], combine: foldingFunction2).first!
 
 

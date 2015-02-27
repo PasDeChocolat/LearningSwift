@@ -114,7 +114,6 @@ func token<Token: Equatable>(t: Token) -> Parser<Token, Token> {
   return satisfy { $0 == t }
 }
 
-
 /*---------------------------------------------------------------------/
 //  Allow adding sequences
 /---------------------------------------------------------------------*/
@@ -283,141 +282,144 @@ let decimals = NSCharacterSet.decimalDigitCharacterSet()
 let decimalDigit = characterFromSet(decimals)
 
 
-/*---------------------------------------------------------------------/
-//  Zero or More
-/---------------------------------------------------------------------*/
-func prepend<A>(l: A) -> [A] -> [A] {
-  return { (x: [A]) in [l] + x }
-}
+// Since @autoclosure was discontinued in Swift 1.2, lazy won't work.
+// Attempting to use Box here will result in an infinite loop.
 
-
-// So we use an autoclosure instead
-func lazy<Token, A>(f: @autoclosure () -> Parser<Token, A>) -> Parser<Token, A> {
-  return Parser { x in f().p(x) }
-}
-
-
-func zeroOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
-  return (pure(prepend) <*> p <*> lazy(zeroOrMore(p))) <|> pure([])
-}
-
-
-/*---------------------------------------------------------------------/
-//  One or More
-/---------------------------------------------------------------------*/
-func oneOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
-  return pure(prepend) <*> p <*> zeroOrMore(p)
-}
-
-
-/*---------------------------------------------------------------------/
-//  </> ==> pure(l) <*> r
+///*---------------------------------------------------------------------/
+////  Zero or More
+///---------------------------------------------------------------------*/
+//func prepend<A>(l: A) -> [A] -> [A] {
+//  return { (x: [A]) in [l] + x }
+//}
 //
-//  a.k.a Haskell's <$>
-/---------------------------------------------------------------------*/
-infix operator </> { precedence 170 }
-func </> <Token, A, B>(l: A -> B,
-  r: Parser<Token, A>) -> Parser<Token, B> {
-    
-    return pure(l) <*> r
-}
-
-
-/*---------------------------------------------------------------------/
-//  Add two integers with "+"
 //
-//  We'll see an easier way to "skip" the operator below (<*)
-/---------------------------------------------------------------------*/
-let plus: Character = "+"
-func add(x: Int)(_: Character)(y: Int) -> Int {
-  return x + y
-}
-
-let number = { characters in string(characters).toInt()! } </> oneOrMore(decimalDigit)
-
-
-/*---------------------------------------------------------------------/
-//  <*  Throw away the right-hand result
-/---------------------------------------------------------------------*/
-infix operator <*  { associativity left precedence 150 }
-func <* <Token, A, B>(p: Parser<Token, A>, q: Parser<Token, B>)
-  -> Parser<Token, A> {
-
-    return {x in {_ in x} } </> p <*> q
-}
-
-
-/*---------------------------------------------------------------------/
-//  *>  Throw away the left-hand result
-/---------------------------------------------------------------------*/
-infix operator  *> { associativity left precedence 150 }
-func *> <Token, A, B>(p: Parser<Token, A>,
-  q: Parser<Token, B>) -> Parser<Token, B> {
-    
-    return {_ in {y in y} } </> p <*> q
-}
-
-
-func curry<A, B, C>(f: (A, B) -> C) -> A -> B -> C {
-  return { x in { y in f(x, y) } }
-}
-
-
-/*=====================================================================/
-//  Expression Parser
-/=====================================================================*/
-
-
-/*---------------------------------------------------------------------/
-//  </  Consumes, but doesn't use its right operand
-/---------------------------------------------------------------------*/
-infix operator </  { precedence 170 }
-func </ <Token, A, B>(l: A, r: Parser<Token, B>) -> Parser<Token, A> {
-  return pure(l) <* r
-}
-
-
-func optionallyFollowed<A>(l: Parser<Character, A>,
-                           r: Parser<Character, A -> A>)
-                           -> Parser<Character, A> {
-    
-    let apply: A -> (A -> A) -> A = { x in { f in f(x) } }
-    return apply </> l <*> (r <|> pure { $0 })
-}
-
-
-func flip<A, B, C>(f: (B, A) -> C) -> (A, B) -> C {
-  return { (x, y) in f(y, x) }
-}
-
-
-typealias Calculator = Parser<Character, Int>
-typealias Op = (Character, (Int, Int) -> Int)
-let operatorTable: [Op] = [("*", *), ("/", /), ("+", +), ("-", -)]
-
-
-func op(character: Character,
-        evaluate: (Int, Int) -> Int,
-        operand: Calculator) -> Calculator {
-    
-    let withOperator = curry(flip(evaluate)) </ token(character) <*> operand
-    return optionallyFollowed(operand, withOperator)
-}
-
-
-func eof<A>() -> Parser<A, ()> {
-  return Parser { stream in
-    if (stream.isEmpty) {
-      return one(((), stream))
-    }
-    return none()
-  }
-}
-
-
-func pExpression() -> Calculator {
-  return operatorTable.reduce(number, { next, inOp in
-    op(inOp.0, inOp.1, next)
-  })
-}
-testParser(pExpression() <* eof(), "10-3*2")
+//// So we use an autoclosure instead
+//func lazy<Token, A>(f: @autoclosure () -> Parser<Token, A>) -> Parser<Token, A> {
+//  return Parser { x in f().p(x) }
+//}
+//
+//
+//func zeroOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
+//  return (pure(prepend) <*> p <*> lazy(zeroOrMore(p))) <|> pure([])
+//}
+//
+//
+///*---------------------------------------------------------------------/
+////  One or More
+///---------------------------------------------------------------------*/
+//func oneOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
+//  return pure(prepend) <*> p <*> zeroOrMore(p)
+//}
+//
+//
+///*---------------------------------------------------------------------/
+////  </> ==> pure(l) <*> r
+////
+////  a.k.a Haskell's <$>
+///---------------------------------------------------------------------*/
+//infix operator </> { precedence 170 }
+//func </> <Token, A, B>(l: A -> B,
+//  r: Parser<Token, A>) -> Parser<Token, B> {
+//    
+//    return pure(l) <*> r
+//}
+//
+//
+///*---------------------------------------------------------------------/
+////  Add two integers with "+"
+////
+////  We'll see an easier way to "skip" the operator below (<*)
+///---------------------------------------------------------------------*/
+//let plus: Character = "+"
+//func add(x: Int)(_: Character)(y: Int) -> Int {
+//  return x + y
+//}
+//
+//let number = { characters in string(characters).toInt()! } </> oneOrMore(decimalDigit)
+//
+//
+///*---------------------------------------------------------------------/
+////  <*  Throw away the right-hand result
+///---------------------------------------------------------------------*/
+//infix operator <*  { associativity left precedence 150 }
+//func <* <Token, A, B>(p: Parser<Token, A>, q: Parser<Token, B>)
+//  -> Parser<Token, A> {
+//
+//    return {x in {_ in x} } </> p <*> q
+//}
+//
+//
+///*---------------------------------------------------------------------/
+////  *>  Throw away the left-hand result
+///---------------------------------------------------------------------*/
+//infix operator  *> { associativity left precedence 150 }
+//func *> <Token, A, B>(p: Parser<Token, A>,
+//  q: Parser<Token, B>) -> Parser<Token, B> {
+//    
+//    return {_ in {y in y} } </> p <*> q
+//}
+//
+//
+//func curry<A, B, C>(f: (A, B) -> C) -> A -> B -> C {
+//  return { x in { y in f(x, y) } }
+//}
+//
+//
+///*=====================================================================/
+////  Expression Parser
+///=====================================================================*/
+//
+//
+///*---------------------------------------------------------------------/
+////  </  Consumes, but doesn't use its right operand
+///---------------------------------------------------------------------*/
+//infix operator </  { precedence 170 }
+//func </ <Token, A, B>(l: A, r: Parser<Token, B>) -> Parser<Token, A> {
+//  return pure(l) <* r
+//}
+//
+//
+//func optionallyFollowed<A>(l: Parser<Character, A>,
+//                           r: Parser<Character, A -> A>)
+//                           -> Parser<Character, A> {
+//    
+//    let apply: A -> (A -> A) -> A = { x in { f in f(x) } }
+//    return apply </> l <*> (r <|> pure { $0 })
+//}
+//
+//
+//func flip<A, B, C>(f: (B, A) -> C) -> (A, B) -> C {
+//  return { (x, y) in f(y, x) }
+//}
+//
+//
+//typealias Calculator = Parser<Character, Int>
+//typealias Op = (Character, (Int, Int) -> Int)
+//let operatorTable: [Op] = [("*", *), ("/", /), ("+", +), ("-", -)]
+//
+//
+//func op(character: Character,
+//        evaluate: (Int, Int) -> Int,
+//        operand: Calculator) -> Calculator {
+//    
+//    let withOperator = curry(flip(evaluate)) </ token(character) <*> operand
+//    return optionallyFollowed(operand, withOperator)
+//}
+//
+//
+//func eof<A>() -> Parser<A, ()> {
+//  return Parser { stream in
+//    if (stream.isEmpty) {
+//      return one(((), stream))
+//    }
+//    return none()
+//  }
+//}
+//
+//
+//func pExpression() -> Calculator {
+//  return operatorTable.reduce(number) { next, inOp in
+//    op(inOp.0, inOp.1, next)
+//  }
+//}
+//testParser(pExpression() <* eof(), "10-3*2")

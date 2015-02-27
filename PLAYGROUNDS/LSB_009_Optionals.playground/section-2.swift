@@ -69,20 +69,20 @@ defaultName()
 // https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/OptionalChaining.html
 //
 struct Address {
-  let state: String?
+  var state: String?
 }
 struct Person {
-  let address: Address?
+  var address: Address?
 }
 struct Order {
-  let person: Person?
+  var person: Person?
 }
 var order = Order(person: Person(address: Address(state: "CA")))
-let state = order.person?.address?.state?
+let state = order.person?.address?.state
 if state != nil {
   "Order is from \(state!)."
 }
-if let orderState = order.person?.address?.state? {
+if let orderState = order.person?.address?.state {
   "Order is from \(orderState)."
 }
 

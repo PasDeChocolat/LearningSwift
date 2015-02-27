@@ -303,7 +303,7 @@ public func prepend<A>(l: A) -> [A] -> [A] {
 
 
 // So we use an autoclosure instead
-public func lazy<Token, A>(f: @autoclosure () -> Parser<Token, A>) -> Parser<Token, A> {
+public func lazy<Token, A>(@autoclosure f: () -> Parser<Token, A>) -> Parser<Token, A> {
   return Parser { x in f().p(x) }
 }
 

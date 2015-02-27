@@ -109,7 +109,7 @@ anotherCat.meow()
 
 var thingsao : [AnyObject] = [3, 3.14, "pi"]
 //thingsao.dynamicType
-_stdlib_getTypeName(thingsao)
+//_stdlib_getTypeName(thingsao)
 _stdlib_getDemangledTypeName(thingsao)
 String.fromCString(object_getClassName(thingsao))
 let ft : AnyObject = thingsao.first!
@@ -117,6 +117,6 @@ let ft : AnyObject = thingsao.first!
 // An array of Any
 var thingsa : [Any] = [3, 3.14, "pi"]
 var fa : Any = thingsa[0]
-var fi : Int = fa as Int
-var fs : String = thingsa[2] as String
+var fi : Int = fa as! Int
+var fs : String = thingsa[2] as! String
 

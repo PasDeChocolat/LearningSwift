@@ -77,14 +77,14 @@ func map<T>(tree: Tree<T>, transform f: T -> T) -> Tree<T> {
   switch tree {
   case let .Node(value, left, right):
     return Tree.Node(Box(f(value.unbox)),
-                     Box(map(left.unbox, f)),
-                     Box(map(right.unbox, f)))
+                     Box(map(left.unbox, transform: f)),
+                     Box(map(right.unbox, transform: f)))
   case .Empty:
     return Tree.Empty
   }
 }
 
-let fivePlusFive = map(five, { $0 + 5 })
+let fivePlusFive = map(five) { $0 + 5 }
 
 
 // List Tree node values in an array

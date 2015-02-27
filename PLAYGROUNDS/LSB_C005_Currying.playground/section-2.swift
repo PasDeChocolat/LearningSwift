@@ -32,7 +32,7 @@ login("email", "bad", success)
 /*------------------------------------/
 //  Native Swift curry
 /------------------------------------*/
-func curriedLogin1(# email: String)(pw: String)(success: Bool -> String) -> String {
+func curriedLogin1(# email: String)(pw: String)(_ success: Bool -> String) -> String {
   return success(email == "email" && pw == "pass")
 }
 

@@ -225,30 +225,37 @@ v
 //  split
 /---------------------------------*/
 v = Array(1...10)
-split(v, { (x) -> Bool in
-  x == 5
-})
-var aryOfIntArys = split(v, { $0 == 5 })
+split(v, maxSplit: 3, allowEmptySlices: true, isSeparator: {$0 == 5})
+split(v, maxSplit: 3, allowEmptySlices: true) {$0 == 5}
+split(v) {$0 == 5}
+
+// This doesn't work though
+//split(v, { (x) -> Bool in
+//  x == 5
+//})
+
+var aryOfIntArys = split(v) { $0 == 5 }
 aryOfIntArys
 
 v = Array(1...10)
-aryOfIntArys = split(v, { $0 % 2 == 0}, maxSplit: 2, allowEmptySlices: true)
+aryOfIntArys = split(v, maxSplit: 2, allowEmptySlices: true) { $0 % 2 == 0}
 aryOfIntArys
 
 v = Array(1...10)
-aryOfIntArys = split(v, { $0 < 3 || $0 % 2 == 0}, maxSplit: 5, allowEmptySlices: true)
+aryOfIntArys = split(v, maxSplit: 5, allowEmptySlices: true) { $0 < 3 || $0 % 2 == 0}
 aryOfIntArys
 
 v = Array(1...10)
-aryOfIntArys = split(v, { $0 < 3 || $0 % 2 == 0}, maxSplit: 5, allowEmptySlices: false)
+aryOfIntArys = split(v, maxSplit: 5, allowEmptySlices: false) { $0 < 3 || $0 % 2 == 0}
 aryOfIntArys
 
 s = "The quick brown fox jumped."
-var words = split(s, { $0 == " " }, maxSplit: 3, allowEmptySlices: true)
-words
+//var words = split(s, { $0 == " " }, maxSplit: 3, allowEmptySlices: true)
+//words
 
-words = split(s, { $0 == " " })
-words
+
+//words = split(s, { $0 == " " })
+//words
 
 
 /*---------------------------------/

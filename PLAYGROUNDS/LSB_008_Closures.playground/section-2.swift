@@ -99,7 +99,7 @@ let byUncasedAlpha: SortStrings = {
 sorted(movies, byUncasedAlpha)
 
 let byLength: SortStrings = {
-  countElements($0) < countElements($1)
+  count($0) < count($1)
 }
 sorted(movies, byLength)
 

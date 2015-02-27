@@ -10,22 +10,34 @@ import UIKit
 /===================================*/
 
 
+/*---------------------------------------------------------/
+//  Box, a hack
+/---------------------------------------------------------*/
+class Box<T> {
+  let unbox: T
+  init(_ value: T) { self.unbox = value }
+}
+
 
 /*------------------------------------/
 //  As an Enum
 /------------------------------------*/
 enum Nat {
   case Zero
-  case Succ(@autoclosure () -> Nat)
+  case Succ(Box<Nat>)
+}
+
+func succ(v: Nat) -> Nat {
+  return .Succ(Box(v))
 }
 
 
 // A few examples
 let zero: Nat = .Zero
-let one: Nat = .Succ(.Zero)
-let two: Nat = .Succ(one)
-let three: Nat = .Succ(two)
-let four: Nat = .Succ(.Succ(.Succ(.Succ(.Zero))))
+let one: Nat = succ(.Zero)
+let two: Nat = succ(one)
+let three: Nat = succ(two)
+let four: Nat = succ(succ(succ(succ(.Zero))))
 
 
 /*------------------------------------/
@@ -41,7 +53,7 @@ func == (a: Nat, b: Nat) -> Bool {
   case (.Zero, .Succ), (.Succ, .Zero):
     return false
   case let (.Succ(pred_a), .Succ(pred_b)):
-    return pred_a() == pred_b()
+    return pred_a.unbox == pred_b.unbox
   }
 }
 
@@ -50,7 +62,7 @@ func == (a: Nat, b: Nat) -> Bool {
 zero == zero
 one == one
 one == two
-four == .Succ(.Succ(.Succ(.Succ(.Zero))))
+four == succ(succ(succ(succ(.Zero))))
 
 
 /*------------------------------------/
@@ -65,7 +77,7 @@ func add (a: Nat, b: Nat) -> Nat {
   case (.Zero, _):
     return b
   case let (.Succ(pred_a), _):
-    return add(pred_a(), .Succ(b))
+    return add(pred_a.unbox, succ(b))
   }
 }
 
@@ -91,7 +103,7 @@ func * (a: Nat, b: Nat) -> Nat {
   case (_, .Zero), (.Zero, _):
     return .Zero
   case let (.Succ(pred_a), _):
-    return pred_a() * b + b
+    return pred_a.unbox * b + b
   }
 }
 
@@ -116,7 +128,7 @@ func ^ (a: Nat, b: Nat) -> Nat {
   case (_, .Zero):
     return one
   case let (_, .Succ(pred_b)):
-    return (a ^ pred_b()) * a
+    return (a ^ pred_b.unbox) * a
   }
 }
 
@@ -145,7 +157,7 @@ func <(a: Nat, b: Nat) -> Bool {
   case (.Zero, .Succ):
     return true
   case let (.Succ(pred_a), .Succ(pred_b)):
-    return pred_a() < pred_b()
+    return pred_a.unbox < pred_b.unbox
   }
 }
 
@@ -179,7 +191,7 @@ func subtract (a: Nat, b: Nat) -> Nat {
   case (.Zero, .Succ):
     assertionFailure("Only handles Natural numbers! (a-b) where (b>a)")
   case let (.Succ(pred_a), .Succ(pred_b)):
-    return subtract(pred_a(), pred_b())
+    return subtract(pred_a.unbox, pred_b.unbox)
   }
 }
 
@@ -306,7 +318,7 @@ func pred (n: Nat) -> Nat? {
   case .Zero:
     return nil
   case let .Succ(pred_n):
-    return pred_n() as Nat?
+    return pred_n.unbox as Nat?
   }
 }
 
@@ -332,7 +344,7 @@ extension Nat: IntegerLiteralConvertible {
       self = .Zero
     } else {
       self = Array(0..<value).reduce(Nat.Zero) { sum, _ in
-        return Nat.Succ(sum)
+        return succ(sum)
       }
     }
   }

@@ -42,7 +42,7 @@ sumSlice(aFewNumbers)
 //  Generic Types?
 /---------------------------------*/
 func sumSeq<S: SequenceType>(ns: S) -> Int {
-  return reduce(ns, 0) { $0 + ($1 as Int) }
+  return reduce(ns, 0) { $0 + ($1 as! Int) }
 }
 sumSeq(numbers)
 sumSeq(aFewNumbers)

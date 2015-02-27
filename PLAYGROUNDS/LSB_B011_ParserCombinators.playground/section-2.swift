@@ -467,6 +467,7 @@ let decimalDigit = characterFromSet(decimals)
 testParser(decimalDigit, "012")
 
 
+
 /*---------------------------------------------------------------------/
 //  Zero or More
 /---------------------------------------------------------------------*/
@@ -481,61 +482,65 @@ func prepend<A>(l: A) -> [A] -> [A] {
 //}
 
 
-// So we use an autoclosure instead
-func lazy<Token, A>(f: @autoclosure () -> Parser<Token, A>) -> Parser<Token, A> {
-  return Parser { x in f().p(x) }
-}
 
+// Since @autoclosure was discontinued in Swift 1.2, lazy won't work.
+// Attempting to use Box here will result in an infinite loop.
 
-func zeroOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
-  return (pure(prepend) <*> p <*> lazy(zeroOrMore(p))) <|> pure([])
-}
-
-
-// Finds many digits
-testParser(zeroOrMore(decimalDigit), "12345")
-
-// Finds zero digits
-testParser(zeroOrMore(decimalDigit), "ab123")
-
-
-/*---------------------------------------------------------------------/
-//  One or More
-/---------------------------------------------------------------------*/
-func oneOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
-  return pure(prepend) <*> p <*> zeroOrMore(p)
-}
-
-
-let number = pure { characters in string(characters).toInt()! } <*> oneOrMore(decimalDigit)
-testParser(number, "205")
-
-
-// Results in an Int
-let seqOOM = number.p("205a".slice)
-var genOOM = seqOOM.generate()
-let resultOOM = genOOM.next()
-resultOOM!
-resultOOM!.0 == 205
-resultOOM!.1
-
-
-/*---------------------------------------------------------------------/
-//  </> ==> pure(l) <*> r
+//// So we use an autoclosure instead
+//func lazy<Token, A>(f: @autoclosure () -> Parser<Token, A>) -> Parser<Token, A> {
+//  return Parser { x in f().p(x) }
+//}
 //
-//  a.k.a Haskell's <$>
-/---------------------------------------------------------------------*/
-infix operator </> { precedence 170 }
-func </> <Token, A, B>(l: A -> B,
-  r: Parser<Token, A>) -> Parser<Token, B> {
-    
-    return pure(l) <*> r
-}
-
-
-// Same thing, but with new syntax (</> instead of pure(...) <*>)
-let number2 = { characters in string(characters).toInt()! } </> oneOrMore(decimalDigit)
-testParser(number, "205")
+//
+//func zeroOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
+//  return (pure(prepend) <*> p <*> lazy(zeroOrMore(p))) <|> pure([])
+//}
+//
+//
+//// Finds many digits
+//testParser(zeroOrMore(decimalDigit), "12345")
+//
+//// Finds zero digits
+//testParser(zeroOrMore(decimalDigit), "ab123")
+//
+//
+///*---------------------------------------------------------------------/
+////  One or More
+///---------------------------------------------------------------------*/
+//func oneOrMore<Token, A>(p: Parser<Token, A>) -> Parser<Token, [A]> {
+//  return pure(prepend) <*> p <*> zeroOrMore(p)
+//}
+//
+//
+//let number = pure { characters in string(characters).toInt()! } <*> oneOrMore(decimalDigit)
+//testParser(number, "205")
+//
+//
+//// Results in an Int
+//let seqOOM = number.p("205a".slice)
+//var genOOM = seqOOM.generate()
+//let resultOOM = genOOM.next()
+//resultOOM!
+//resultOOM!.0 == 205
+//resultOOM!.1
+//
+//
+///*---------------------------------------------------------------------/
+////  </> ==> pure(l) <*> r
+////
+////  a.k.a Haskell's <$>
+///---------------------------------------------------------------------*/
+//infix operator </> { precedence 170 }
+//func </> <Token, A, B>(l: A -> B,
+//  r: Parser<Token, A>) -> Parser<Token, B> {
+//    
+//    return pure(l) <*> r
+//}
+//
+//
+//// Same thing, but with new syntax (</> instead of pure(...) <*>)
+//let number2 = { characters in string(characters).toInt()! } </> oneOrMore(decimalDigit)
+//testParser(number, "205")
 
 
 

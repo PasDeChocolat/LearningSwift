@@ -384,7 +384,7 @@ let example2 = blueSquare ||| cyanCircle |||
   redSquare ||| greenCircle
 
 func docDirURL() -> NSURL {
-  return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+  return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as! NSURL
 }
 
 func docDirURLString() -> String {
