@@ -37,6 +37,9 @@
       <FileRef
          location = "group:LSB_D009_DeMorgansLaw.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_D010_SemiGroups.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
