@@ -40,6 +40,9 @@
       <FileRef
          location = "group:LSB_D010_SemiGroups.playground">
       </FileRef>
+      <FileRef
+         location = "group:LSB_D011_HomemadeReduce.playground">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
